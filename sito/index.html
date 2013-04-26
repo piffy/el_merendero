@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=windows-1250" />
+  <meta name="generator" content="PSPad editor, www.pspad.com" />
+  <link href="style.css" type="text/css" rel="stylesheet" media="screen" />
+  <title>EL MERENDERO - HOME</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript">
+  //size=[$(window).width(),$(window).height()]; // variabile globale contenente le dimensioni del browser
+  
+  /*$(window).load(function() {           //
+     window.resizeTo(1024,768);           //
+   });                                    //   Funzioni di dimensionamento pagine
+                                          //
+  $(window).resize(function() {           //
+  window.resizeTo(size[0],size[1]);       //
+  });                                     */
+  $(window).load(function(){
+  $('.container').find('img#slide').each(function(){
+  var imgClass = (this.width/this.height > 1) ? 'wide' : 'tall';
+  $(this).addClass(imgClass);
+  })
+  })
+  </script>
+  <!--------------------------------------------------------------------->
+  <!--------------------------------------------------------------------->
+  <script type="text/javascript">
+  
+   var timer=setInterval(function(){fadeOut()},10000);  
+   numimg=1;
+   
+   function changetext() {
+   var img=$("img#slide").attr("src");
+   if(img.indexOf("1.jpg") !== -1)
+   {                                                                      //qui imposteremo il testo
+   $("h2.textslider").text("LA STORIA");                                   //al cambiare di immagine
+   //$("p.textslider").text("");
+   }
+   if(img.indexOf("2.jpg") !== -1)
+   {                                                                      
+   $("h2.textslider").text("IL PROGETTO");                                   
+   //$("p.textslider").text("");
+   }
+   if(img.indexOf("3.jpg") !== -1)
+   {                                                                      
+   $("h2.textslider").text("PHOTO GALLERY");                                   
+   //$("p.textslider").text("");
+   }
+   if(img.indexOf("4.jpg") !== -1)
+   {                                                                      
+   $("h2.textslider").text("LE MERENDE");                                   
+   //$("p.textslider").text("");
+   }
+   }
+   
+   function changepic()  {
+   if(numimg==4)
+   numimg=0;
+   numimg++;
+   $("#imgslider > img#slide").attr("src",numimg.toString()+".jpg");
+   $("#imgslider").css("background-image","url('"+numimg.toString()+".jpg')");
+   }
+   
+   function fadeIn() {
+   changepic();
+   for (i = 0; i <= 1; i += 0.01) {
+   setTimeout("SetOpa(" + i +")", i * 1000);
+   changetext();
+  }
+  }  
+
+  function fadeOut() {
+  for (i = 0; i <= 1; i += 0.01) {
+  setTimeout("SetOpa(" + (1 - i) +")", i * 1000);
+  }
+  setTimeout("fadeIn()", (1000));
+  }  
+ 
+  function SetOpa(Opa) {
+  var elm=document.getElementById("slider");
+  elm.style.opacity = Opa;
+  elm.style.MozOpacity = Opa;
+  elm.style.KhtmlOpacity = Opa;
+  elm.style.filter = "alpha(opacity=' + (Opa * 100) + ');";
+  }
+  
+  function slideiter(){
+  if($("img#slideopz").attr("src")=="Pause.png"){
+     clearInterval(timer);
+     $("img#slideopz").attr("src","Play.png");
+  }
+  else
+  {
+    timer=setInterval(function(){fadeOut()},10000);
+    $("img#slideopz").attr("src","Pause.png"); 
+  }
+  }
+  </script> 
+  </head>
+  <body>
+  <header id="head" ><a style="text-decoration:none; color:transparent;" href="index.html"><img src="log.png" class="logo" alt="logo" /></a></header>
+  <table class="menu" cellpadding="0" cellspacing="0">
+  <tr>
+  <td class="menu" id="selected"><a class="menu">HOME</a></td>
+  <td class="menu"><a href="storia.html" class="menu">STORIA</a></td>
+  <td class="menu"><a href="progetto.html" class="menu">PROGETTO</a></td>  <!--che conterrŕ la voce codice con appositi link a pivotal e a git-->
+  <td class="menu"><a href="photogallery.html" class="menu">PHOTO GALLERY</a></td>
+  <td class="menu"><a href="merende.html" class="menu">MERENDE</a></td>
+  </tr>
+  </table>
+  <div id="headcontent" style="height:345px;">
+  <div id="slider"> 
+  <div id="imgslider" class="container">
+  <img id="slide" src="1.jpg" alt="picture" /> <!--758X345-->
+  </div>
+  <div id="textslider">
+  <h2 class="textslider">LA STORIA</h2>
+  <p class="textslider">ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
+   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
+   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
+   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  </div>
+  <img id="slideopz" onclick="slideiter()" src="Pause.png" alt="" />
+  </div>
+  <div class="footercontent">
+  <img src="logi.png" class="footerlogo" alt="footerlogo" />
+  <p class="footerlinks" ><a class="footerlink" href="#null">Contatti</a> | <a class="footerlink" href="#null">Privacy</a></p>
+  </div>
+  
+   
+  </body>
+</html>
