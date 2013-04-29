@@ -38,18 +38,4 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
         }
         return s;
     }
-
-    public static void main(String[] args) {
-        OrdineDiClasse odc = new OrdineDiClasse("4B Info");
-        Merenda m = new Merenda(4.3f, "Panino 1") ;
-        Listamerende lm = new Listamerende(m);
-        Ordine o = new Ordine("Manfredini");
-        o.setMerendeOrdinate(lm);
-        odc.add(o);
-        lm = new Listamerende(new Merenda(5.6f, "Panino 2"));
-        o = new Ordine("Eddy");
-        o.setMerendeOrdinate(lm);
-        odc.add(o);
-        System.out.println(odc);
-    }
 }
