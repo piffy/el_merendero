@@ -49,6 +49,7 @@ public class Stampante implements Printable {
 
     /**
      * Metodo che genera il layout della pagina da stampare
+     *
      * @param g Layout della pagina
      * @param pf Formato della pagina
      * @param page Numero di pagine
@@ -79,9 +80,9 @@ public class Stampante implements Printable {
             appoggio = prezzi.get(i) + " €";
             g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 120 + SPAZIATURA * i);
             int lungi = fm.stringWidth(appoggio);
-            appoggio =  numeri.get(i)+" - "+merende.get(i);
-            while ( MARGINE_DESTRO - MARGINE - fm.stringWidth(appoggio) - lungi > 10) {
-                appoggio+=".";
+            appoggio = numeri.get(i) + " - " + merende.get(i);
+            while (MARGINE_DESTRO - MARGINE - fm.stringWidth(appoggio) - lungi > 10) {
+                appoggio += ".";
             }
             g.drawString(appoggio, MARGINE, 120 + SPAZIATURA * i);
             totale += prezzi.get(i);
@@ -99,10 +100,11 @@ public class Stampante implements Printable {
 
     /**
      * Metodo che aggiunge una merenda all'ordine
+     *
      * @param merenda Nome della merenda
      * @param prezzo Prezzo della merenda
      */
-    public void add(String merenda,int numero, float prezzo) {
+    public void add(String merenda, int numero, float prezzo) {
         merende.add(merenda);
         numeri.add(numero);
         prezzi.add(prezzo);
@@ -110,6 +112,7 @@ public class Stampante implements Printable {
 
     /**
      * Metodo obbligatorio che aggiunge il nome della classe all'ordine
+     *
      * @param classe Nome della classe
      */
     public void addClasse(String classe) {
@@ -118,6 +121,7 @@ public class Stampante implements Printable {
 
     /**
      * Metodo obbligatorio che aggiunge il l'ora della consegna all'ordine
+     *
      * @param data Giorno e ora della consegna dell'ordine
      */
     public void addData(GregorianCalendar data) {
@@ -126,6 +130,7 @@ public class Stampante implements Printable {
 
     /**
      * Metodo obbligatorio che aggiunge l'aula della consegna all'ordine
+     *
      * @param aula Aula della consegna
      */
     public void addAula(String aula) {
@@ -134,6 +139,7 @@ public class Stampante implements Printable {
 
     /**
      * Metodo obbligatorio che aggiunge i soldi forniti all'ordine
+     *
      * @param soldiForniti valore float dei soldi forniti
      */
     public void addSoldiForniti(float soldiForniti) {
@@ -165,12 +171,12 @@ public class Stampante implements Printable {
         PrinterJob pj = PrinterJob.getPrinterJob();
         // Sets the name of the document to be printed.
         pj.setJobName("TestStampa");
-        // Presents a dialog to the user for changing the properties of the print job.
-        pj.printDialog();
         // Calls painter to render the pages.
         pj.setPrintable(this);
-
-        pj.print();
+        // Presents a dialog to the user for changing the properties of the print job.
+        if (pj.printDialog()) {
+            pj.print();
+        }
 
         classe = null;
         data = null;
@@ -182,6 +188,7 @@ public class Stampante implements Printable {
 
     /**
      * Main di prova per la classe stampante
+     *
      * @param args the command line arguments
      * @throws PrinterException generata in caso di mancanza di stampante
      */
@@ -192,10 +199,10 @@ public class Stampante implements Printable {
         st.addClasse("4B Info");
         st.addAula("216");
         st.addSoldiForniti(17.5f);
-        st.add("Cotoletta",2, 5.80f);
-        st.add("Hot-Dog",1, 1.20f);
-        st.add("Forno",3, 3.00f);
-        st.add("Piadina",4, 2.50f);
+        st.add("Cotoletta", 2, 5.80f);
+        st.add("Hot-Dog", 1, 1.20f);
+        st.add("Forno", 3, 3.00f);
+        st.add("Piadina", 4, 2.50f);
         st.print();
     }
 }
