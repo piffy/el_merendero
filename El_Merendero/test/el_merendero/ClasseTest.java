@@ -4,6 +4,7 @@
  */
 package el_merendero;
 
+import java.io.File;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
@@ -82,7 +83,7 @@ public class ClasseTest {
         System.out.println("set_studenti");
         String nomefile = "5C-ELT.txt";
         Classe instance = new Classe("5C-ELT.txt");
-        instance.set_studenti(nomefile);
+        instance.set_studenti(new File("config\\classi\\".concat(nomefile)));
         String[] expResult = {"AASSIR RIDA","ABBRACCIAVENTO MARCO","BECCANTINI ANDREA","CABRERA JASON","CAMPANALE MATTIA","DISTRATTO DOMENICO","GOLDONI RICCARDO","GUBERMAN VILLAFANE MAURICIO NAHUEL","MARMIROLI NICOLO' DANIEL","SALARDI FILIPPO"};
         assertEquals(expResult,instance.getNomiStudenti());
         // TODO review the generated test code and remove the default call to fail.
@@ -98,5 +99,14 @@ public class ClasseTest {
         String[] expResult = {"AASSIR RIDA","ABBRACCIAVENTO MARCO","BECCANTINI ANDREA","CABRERA JASON","CAMPANALE MATTIA","DISTRATTO DOMENICO","GOLDONI RICCARDO","GUBERMAN VILLAFANE MAURICIO NAHUEL","MARMIROLI NICOLO' DANIEL","SALARDI FILIPPO"};
         String[] result = instance.toStringStudenti();
         assertArrayEquals(expResult, result);
+    }
+    
+    @Test
+    public void testContaStudenti(){
+        System.out.println("ContaStudenti");
+        Classe instance = new Classe("5C-ELT.txt");
+        //Quando utilizzo della funzione ContaStudenti nel costruttore.
+        int ris = 10;
+        assertEquals(ris,instance.getStudentiTotali());
     }
 }
