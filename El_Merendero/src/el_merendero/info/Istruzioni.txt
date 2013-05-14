@@ -1,0 +1,17 @@
+		ISTRUZIONI
+--------------------------------------------------------------------------------
+
+Come avviare un file .jar : un file di estensione .jar  è un eseguibile 
+in java, per questo per poter avviare questo tipo di estensioni 
+bisogna installare sul proprio computer il java runtime environment 
+(JRE) ---------> download ------> http://www.oracle.com/technetwork/java/javase/downloads/index.html
+
+Download: click sul bottone Download sotto la scritta JRE (non server JRE) e seguire le 
+istruzioni per il completamento del download.
+
+Aprire il file El_Merendero.jar : in windows basta fare doppio click sul file scelto. Altrimenti 
+per avviarlo usare la seguente istruzione -----> "Java -jar nomefile.jar".
+
+--------------------------------------------------------------------------------  
+
+  
