@@ -72,7 +72,7 @@ public class ListaClassiHardwired {
     
     private void ElencoFile()
     {
-        File file = new File(".");
+        File file = new File(".\\config\\classi");
         if(file.isDirectory())
         {
             File[] filesInDir = file.listFiles();

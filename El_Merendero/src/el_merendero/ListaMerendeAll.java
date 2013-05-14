@@ -8,7 +8,6 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +27,7 @@ public class ListaMerendeAll extends Listamerende {
         String s;
         prodotti = new String[8];
         prezzi = new float[8];
-        BufferedReader reader = new BufferedReader(new FileReader("merende.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("config\\merende\\".concat("merende.txt")));
         try {
             while ((s = reader.readLine()) != null) {
                 if (i % 2 != 0) {
