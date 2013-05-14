@@ -4,13 +4,12 @@
  */
 package el_merendero;
 
+import el_merendero.Frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.*;
 
 /**
@@ -24,10 +23,12 @@ public class FrameClasseStudente extends JFrame {
     private String nomiClassi[];
     private String nomiStudenti[];
     private JButton cmdFatto;
-    private JButton cmdAnnulla;
+    private JButton cmdIndietro;
     private ListaClassiHardwired list;
     private JPanel Classi = new JPanel();
     private JPanel Studenti = new JPanel();
+    private String Classe;
+    private String Studente;
     
     public FrameClasseStudente(){
         super("El_Merendero");
@@ -35,13 +36,14 @@ public class FrameClasseStudente extends JFrame {
         setLayout(new BorderLayout());
         
         cmdFatto=new JButton("Fatto");
-        cmdAnnulla=new JButton("Indietro");
+        cmdIndietro=new JButton("Indietro");
         
         list = new ListaClassiHardwired();
         
         nomiClassi=list.getNomiClassi();
         
         nomiStudenti = list.ListaStudentiXClasseData(nomiClassi[0]);
+        Classe = nomiClassi[0];
         boxStudenti = new JComboBox(nomiStudenti); //set up JComboBox
         boxClassi = new JComboBox( nomiClassi ); // set up JComboBox
         boxClassi.setMaximumRowCount( 10 );
@@ -58,6 +60,7 @@ public class FrameClasseStudente extends JFrame {
                // determine whether checkbox selected
                if ( e.getStateChange() == ItemEvent.SELECTED ){
                    nomiStudenti = list.ListaStudentiXClasseData(e.getItem().toString());
+                   Classe=e.getItem().toString();
                    boxStudenti.removeAllItems();
                    for(int i=0;i<nomiStudenti.length;i++) {
                        boxStudenti.addItem(nomiStudenti[i]);
@@ -68,20 +71,27 @@ public class FrameClasseStudente extends JFrame {
             } // end method itemStateChanged
          } // end anonymous inner class
       ); // end call to addItemListener
+        boxStudenti.addItemListener(new ItemListener(){
+         @Override
+         public void itemStateChanged( ItemEvent e ) {
+             if(e.getStateChange() == ItemEvent.SELECTED)
+                 Studente = e.getItem().toString();
+         }
+        });
         Box horizontal = Box.createHorizontalBox();
-        horizontal.add(cmdAnnulla);
+        horizontal.add(cmdIndietro);
         horizontal.add(Box.createHorizontalGlue());
         horizontal.add(Box.createRigidArea(new Dimension(115, 8)));
         horizontal.add(cmdFatto);
         add(horizontal,BorderLayout.SOUTH);
-        cmdAnnulla.addActionListener(
+        cmdIndietro.addActionListener(
                 new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
                     FrameClasseStudente.this.setVisible(false);
                     Frame fb = new Frame();
                     fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-                    fb.setSize( 275, 180 ); // set frame size
+                    fb.setSize( 800, 600 ); // set frame size
                     fb.setLocationRelativeTo(null); //center fr
                     fb.setVisible( true ); // display frame	
                 }
