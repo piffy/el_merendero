@@ -25,7 +25,7 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
     public float getTotale() {
         float tot = 0f;
         for (Ordine o : this) {
-            tot += o.getMerendeOrdinate().getTotale();
+            tot += o.getTotale();
         }
         return tot;
     }
