@@ -27,7 +27,11 @@ public class SplashScreenMerendero extends JWindow {
     JProgressBar pg = new JProgressBar();
     Timer timer;
     int times = 0;
-    public SplashScreenMerendero(){
+    
+    public SplashScreenMerendero(final Frame f){
+        pg.setBorderPainted(true);
+        pg.setForeground(Color.green);
+        
         timer = new Timer(50, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -37,43 +41,18 @@ public class SplashScreenMerendero extends JWindow {
                     dispose();
                     timer.stop();
                     
-                    Frame fr=new Frame();
-                    fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                    fr.setSize(800, 600);
-                    fr.setVisible(true);
-                    fr.setLocationRelativeTo(null);
-                    
+                    f.setVisible(true);  
                 }
             }
         });
         timer.start();
         
         setLayout(new BorderLayout());
-        ImageIcon img = new ImageIcon(getClass().getResource("splash.jpg")); // BUG NULL POINTER EXCEPTION
-        if (img == null) {
-            System.out.print("Errore");
-            System.exit(-1);
-        }
+        ImageIcon img = new ImageIcon("images/splash.jpg"); 
+        
         JLabel label = new JLabel(img);
         //TODO: Setbackground
         add(label,BorderLayout.CENTER);
         add(pg,BorderLayout.SOUTH);
-    }
-
-    public static void main(String args[]) {
-        final SplashScreenMerendero window = new SplashScreenMerendero();
-        JPanel content = new JPanel();
-        content.setOpaque(false);
-
-        window.setSize(450, 350);
-        window.setLocationRelativeTo(null);
-        window.setVisible(true);
-       
-        ImageIcon image = new ImageIcon("splash.jpg");
-        //Graphics2D graphics = new Graphics2D();
-        //graphics.drawString("Ciao mondo", 10, 10);
-
-        
-        
     }
 }

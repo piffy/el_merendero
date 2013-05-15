@@ -19,10 +19,16 @@ public class El_Merendero {
      * 
      */
     public static void main(String[] args) {
-        Frame fr=new Frame();
-        fr.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        final Frame fr=new Frame();
+        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setSize(800, 600);
-        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+        
+        SplashScreenMerendero splash = new SplashScreenMerendero(fr);
+        splash.setSize(450, 350);
+        splash.setLocationRelativeTo(null);
+        splash.setVisible(true);
+        
     }
 }
 
