@@ -96,15 +96,5 @@ public class FrameClasseStudente extends JFrame {
                     fb.setVisible( true ); // display frame	
                 }
             });
-        cmdFatto.addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                FrameClasseStudente.this.setVisible(false);
-                FrameOrdine fb = new FrameOrdine(Classe,Studente);
-                fb.setSize( 800, 600 ); // set frame size
-                fb.setLocationRelativeTo(null); //center fr
-                fb.setVisible( true ); // display frame	
-            }
-        });
     }
 }

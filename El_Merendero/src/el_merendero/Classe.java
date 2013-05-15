@@ -5,6 +5,7 @@
 package el_merendero;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -33,6 +34,11 @@ public final class Classe {
         nomeClasse = nomefile.substring(0, tot-4).toUpperCase();        
     }
 
+    public short getStudentiTotali() {
+        return StudentiTotali;
+    }
+    
+    
     public String[] getNomiStudenti() {
         return nomiStudenti;
     }
@@ -44,11 +50,12 @@ public final class Classe {
      */
     public Classe(String nomefile)
     {
+        File pathfile = new File("config\\classi\\".concat(nomefile));
         StudentiTotali=0;
         try {
-            ContaStudenti(nomefile);
+            ContaStudenti(pathfile);
             studenti=new Studente[StudentiTotali];
-            set_studenti(nomefile);
+            set_studenti(pathfile);
             Set_nomeClasse(nomefile);
             this.nomiStudenti=toStringStudenti();
         } catch (IOException ex) {
@@ -67,11 +74,11 @@ public final class Classe {
      * @throws IOException 
      */
     
-    private void ContaStudenti(String nomefile) throws IOException{
+    private void ContaStudenti(File pathfile) throws IOException{
         String s;
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(nomefile) );
+            reader = new BufferedReader(new FileReader(pathfile));
             while( (s = reader.readLine()) != null ){
                 StudentiTotali++;
             }
@@ -85,7 +92,7 @@ public final class Classe {
      * @throws FileNotFoundException
      * @throws IOException 
      */
-    public void set_studenti(String nomefile) throws FileNotFoundException, IOException{
+    public void set_studenti(File nomefile) throws FileNotFoundException, IOException{
         short i=0;
         String nome="";
         BufferedReader reader = new BufferedReader(new FileReader(nomefile) );
