@@ -81,5 +81,4 @@ public class Ordine extends LinkedList<Merenda>{
     public String toString() {
         return NomeAcquirente + "\n" + MerendeOrdinate;
     }
-
 }

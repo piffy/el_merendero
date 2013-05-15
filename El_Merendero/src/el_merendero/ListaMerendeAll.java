@@ -15,7 +15,7 @@ import java.util.logging.Logger;
  *
  * @author b11g12
  */
-public class ListaMerendeAll extends Listamerende {
+public class ListaMerendeAll extends Ordine {
 
     private String prodotti[] /*= {"Bombolone", "Panino al salame"}*/;
     private float prezzi[] /*= {0.90f, 1.30f}*/;
@@ -42,10 +42,8 @@ public class ListaMerendeAll extends Listamerende {
         } catch (IOException ex) {
             Logger.getLogger(ListaMerendeAll.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Listamerende comodo = this;
         for (i = 0; i < prodotti.length; i++) {
-            comodo = new Listamerende(new Merenda(prodotti[i],prezzi[i]));
-            comodo = comodo.getNext();
+            this.add(new Merenda(prodotti[i],prezzi[i]));
         }
     }
 

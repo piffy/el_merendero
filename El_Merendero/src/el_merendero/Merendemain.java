@@ -19,9 +19,9 @@ public class Merendemain {
     public static void main(String[] args) throws FileNotFoundException {
         Merenda[] ar = new Merenda[10];
         ar[0] = new Merenda("pan",5.0f);
-        ar[1] = new Merenda("pasaaan",3.0f);
-        ar[2] = new Merenda("painon",4.5f);
-        Listamerende li = new Listamerende();
+        ar[1] = new Merenda("poninan",4.5f);
+        ar[2] = new Merenda("poninan",3.5f);
+        Ordine li = new Ordine();
         li.add(ar[0]);
         li.add(ar[1]);
         li.add(ar[2]);
@@ -30,7 +30,7 @@ public class Merendemain {
         System.out.println(li.getTotale());
 //-------------------------------------------------------------------------------------------------
         Ordine io = new Ordine("Simone");
-        Merenda m1 = new Merenda( "cane",1.2f);
+        Merenda m1 = new Merenda("cane",1.2f);
         io.getMerendeOrdinate().add(m1);
         io.getMerendeOrdinate().add(ar[1]);
         ListaMerendeAll p = new ListaMerendeAll();

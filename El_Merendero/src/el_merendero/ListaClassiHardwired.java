@@ -72,7 +72,7 @@ public class ListaClassiHardwired {
     
     private void ElencoFile()
     {
-        File file = new File(".\\config\\classi");
+        File file = new File(".");
         if(file.isDirectory())
         {
             File[] filesInDir = file.listFiles();
@@ -95,8 +95,6 @@ public class ListaClassiHardwired {
     }
     
     
-    
-    
   /*  @Override
     public String toString(){
         String s = "";
@@ -105,8 +103,4 @@ public class ListaClassiHardwired {
         }
         return s;
     }*/
-
-    public String[] getNomiClassi() {
-        return NomiClassi;
-    }
 }
