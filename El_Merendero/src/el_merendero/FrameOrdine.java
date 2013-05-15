@@ -3,10 +3,10 @@
  * and open the template in the editor.
  */
 package el_merendero;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
+import javax.swing.*;
 
 /**
  *

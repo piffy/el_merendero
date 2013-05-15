@@ -4,7 +4,6 @@
  */
 package el_merendero;
 
-import el_merendero.Frame;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

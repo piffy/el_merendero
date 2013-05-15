@@ -5,7 +5,6 @@
 package el_merendero;
 
 import java.io.FileNotFoundException;
-import java.util.Scanner;
 
 /**
  *

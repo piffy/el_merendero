@@ -4,7 +4,6 @@
  */
 package el_merendero;
 import javax.swing.*;
-import java.awt.*;
 
 /**
  *
