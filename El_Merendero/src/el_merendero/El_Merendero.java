@@ -13,7 +13,10 @@ import java.awt.*;
 public class El_Merendero {
 
     /**
-     * @param args the command line arguments
+     * Applicazione creata da Cagrandi,Bosi,Nizzoli,Galanti;
+     * Applicazione riguardante la grafica del progetto.
+     * Contiene un form iniziale con il concept della pagina iniziale con selezione ordine e classe.
+     * 
      */
     public static void main(String[] args) {
         Frame fr=new Frame();
