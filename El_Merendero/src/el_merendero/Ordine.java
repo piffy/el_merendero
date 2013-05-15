@@ -14,11 +14,8 @@ public class Ordine extends LinkedList<Merenda>{
 
     private String NomeAcquirente;
     private float SoldiForniti;
-    private LinkedList<Merenda> MerendeOrdinate;
     private float resto;
-
    
-    
     public float getResto() {
         return resto;
     }
@@ -39,18 +36,6 @@ public class Ordine extends LinkedList<Merenda>{
 
     public Ordine(String NomeAcquirente) {
         this.NomeAcquirente = NomeAcquirente;
-        MerendeOrdinate = new LinkedList<Merenda>();
-    }
-
-    public Ordine() {
-    }
-
-    public LinkedList<Merenda> getMerendeOrdinate() {
-        return MerendeOrdinate;
-    }
-
-    public void setMerendeOrdinate(LinkedList<Merenda> MerendeOrdinate) {
-        this.MerendeOrdinate = MerendeOrdinate;
     }
 
     public String getNomeAcquirente() {
@@ -71,7 +56,7 @@ public class Ordine extends LinkedList<Merenda>{
 
     public float getTotale() {
         float tot = 0f;
-        for (Merenda m : MerendeOrdinate) {
+        for (Merenda m : this) {
             tot += m.getPrezzo();
         }
         return tot;
@@ -79,6 +64,10 @@ public class Ordine extends LinkedList<Merenda>{
 
     @Override
     public String toString() {
-        return NomeAcquirente + "\n" + MerendeOrdinate;
+        String s = NomeAcquirente + "\n";
+        for (Merenda m : this) {
+            s += m + "\n";
+        }
+        return s;
     }
 }
