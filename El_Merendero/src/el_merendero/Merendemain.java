@@ -21,7 +21,7 @@ public class Merendemain {
         ar[0] = new Merenda("pan",5.0f);
         ar[1] = new Merenda("poninan",4.5f);
         ar[2] = new Merenda("poninan",3.5f);
-        Ordine li = new Ordine();
+        Ordine li = new Ordine("Brunelli");
         li.add(ar[0]);
         li.add(ar[1]);
         li.add(ar[2]);
@@ -31,8 +31,8 @@ public class Merendemain {
 //-------------------------------------------------------------------------------------------------
         Ordine io = new Ordine("Simone");
         Merenda m1 = new Merenda("cane",1.2f);
-        io.getMerendeOrdinate().add(m1);
-        io.getMerendeOrdinate().add(ar[1]);
+        io.add(m1);
+        io.add(ar[1]);
         ListaMerendeAll p = new ListaMerendeAll();
         String[] f = p.getProdotti();
         System.out.println(f[0]);
