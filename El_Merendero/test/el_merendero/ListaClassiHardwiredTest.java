@@ -60,4 +60,5 @@ public class ListaClassiHardwiredTest {
         short result = instance.getClassiTotali();
         assertEquals(expResult, result);
     }
+    
 }

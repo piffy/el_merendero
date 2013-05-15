@@ -4,6 +4,9 @@
  */
 package el_merendero;
 
+import el_merendero.Listamerende;
+import el_merendero.Merenda;
+import el_merendero.Ordine;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,10 +22,10 @@ public class MerendaTest {
     
   @Test
     public void testAdd() {
-        Ordine prova = new Ordine();
+        Listamerende prova = new Listamerende();
         prova.add(new Merenda("panino",2.5f));
-        assertEquals("panino", prova.getFirst().getNome());
-        assertEquals(2.5f, 0.1, prova.getFirst().getPrezzo());
+        assertEquals("panino", prova.getNext().getProdotto().getNome());
+        assertEquals(2.5f, 0.1, prova.getNext().getProdotto().getPrezzo());
     }
 
     @Test
