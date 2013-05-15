@@ -44,7 +44,7 @@ public class ListaMerendeAll extends Listamerende {
         }
         Listamerende comodo = this;
         for (i = 0; i < prodotti.length; i++) {
-            comodo = new Listamerende(new Merenda(prezzi[i], prodotti[i]));
+            comodo = new Listamerende(new Merenda(prodotti[i],prezzi[i]));
             comodo = comodo.getNext();
         }
     }

@@ -1,3 +1,7 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package el_merendero;
 
 import java.awt.Font;
@@ -16,8 +20,7 @@ import javax.swing.JOptionPane;
 
 /**
  * @author Eddy, Manfredini, Bigliardi
- * @author Oukms, Brunelli, Tursi
- * @version 0.02
+ * @version 0.01
  */
 public class Stampante implements Printable {
 
@@ -201,12 +204,6 @@ public class Stampante implements Printable {
      */
     public static void main(String[] args) throws PrinterException {
         Stampante st = new Stampante();
-        Ordine o=new Ordine("Tursi");
-        Listamerende l=new Listamerende();
-        Merenda m=new Merenda(0.5f,"pizza");
-        Merenda z=new Merenda(3f,"pizza");
-        l.add(m);
-        l.add(z);
         GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
         st.addData(d);
         st.addClasse("4B Info");
