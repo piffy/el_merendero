@@ -56,7 +56,7 @@ public class ListaClassiHardwiredTest {
     public void testGetClassiTotali() {
         System.out.println("getClassiTotali");
         ListaClassiHardwired instance = new ListaClassiHardwired();
-        short expResult = 10;
+        short expResult = 11;
         short result = instance.getClassiTotali();
         assertEquals(expResult, result);
     }

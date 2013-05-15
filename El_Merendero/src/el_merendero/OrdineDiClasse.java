@@ -105,7 +105,7 @@ public class OrdineDiClasse {
         OrdineDiClasse comodo = this.next;
         float tot = 0f;
         while (comodo != null) {
-            tot += comodo.getOrdine().getMerendeOrdinate().getTotale();
+            tot += comodo.getOrdine().getTotale();
             comodo = comodo.getNext();
         }
         return tot;

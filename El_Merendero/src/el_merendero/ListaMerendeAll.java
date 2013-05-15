@@ -25,8 +25,8 @@ public class ListaMerendeAll extends Listamerende {
         int j=0;
         int k=0;
         String s;
-        prodotti = new String[8];
-        prezzi = new float[8];
+        prodotti = new String[30];
+        prezzi = new float[30];
         BufferedReader reader = new BufferedReader(new FileReader("config\\merende\\".concat("merende.txt")));
         try {
             while ((s = reader.readLine()) != null) {

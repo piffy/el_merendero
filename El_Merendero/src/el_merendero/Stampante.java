@@ -24,29 +24,36 @@ public class Stampante implements Printable {
     private final int MARGINE = 150;
     private final int MARGINE_DESTRO = 500;
     private final int SPAZIATURA = 15;
-    private LinkedList<String> merende;
-    private LinkedList<Integer> numeri;
-    private LinkedList<Float> prezzi;
+//    private LinkedList<String> merende;
+//    private LinkedList<Integer> numeri;
+//    private LinkedList<Float> prezzi;
     private Image image1;
     private Image image2;
     private String classe;
     private String aula;
     private Calendar data;
-    private Ordine ordinepersonale;
+    private OrdineDiClasse OrdineGen;
 
     /**
      * Costruttore di default che istanzia le liste e carica il logo
      */
     public Stampante() {
-        merende = new LinkedList<String>();
-        numeri = new LinkedList<Integer>();
-        prezzi = new LinkedList<Float>();
         image1 = new ImageIcon(this.getClass().getResource("Logo.jpg")).getImage();
+        OrdineGen=new OrdineDiClasse();
+        OrdineGen.add(new Ordine());
     }
     
-    public void setStampaOrdine(Ordine p){
+    public void setStampaOrdine(OrdineDiClasse p){
         
-        this.ordinepersonale=p;
+        this.OrdineGen=p;
+    }
+
+    public OrdineDiClasse getOrdineGen() {
+        return OrdineGen;
+    }
+
+    public void setOrdineGen(OrdineDiClasse OrdineGen) {
+        this.OrdineGen = OrdineGen;
     }
     
 
@@ -69,7 +76,7 @@ public class Stampante implements Printable {
 
         FontMetrics fm = g.getFontMetrics();
         String appoggio;
-        appoggio = "Studente " + ordinepersonale.getNomeAcquirente();
+        appoggio = "Studente " + OrdineGen.getOrdine().getNomeAcquirente();
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 35);
         appoggio = "Classe " + classe;
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 50);
@@ -78,12 +85,13 @@ public class Stampante implements Printable {
         appoggio = "Aula " + aula;
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 80);
 
+        Ordine comodo=OrdineGen.getOrdine();
         int i;
-        for (i = 0; i < merende.size(); i++) {
-            appoggio = prezzi.get(i) + " €";
+        for (i = 0; i < OrdineGen.getOrdine().getMerendeOrdinate().size(); i++) {
+            appoggio = comodo.get(i).getPrezzo() + " €";
             g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 120 + SPAZIATURA * i);
             int lungi = fm.stringWidth(appoggio);
-            appoggio =  numeri.get(i)+" - "+merende.get(i);
+            appoggio =  OrdineGen.getOrdine().getMerendeOrdinate().get(i).getNumero() +" - "+comodo.get(i).getNome();
             while ( MARGINE_DESTRO - MARGINE - fm.stringWidth(appoggio) - lungi > 10) {
                 appoggio+=".";
             }
@@ -91,11 +99,11 @@ public class Stampante implements Printable {
         }
         
         g.setFont(new Font("suns", Font.BOLD, 12));
-        appoggio = "Totale: " + ordinepersonale.getMerendeOrdinate().getTotale() + " €";
+        appoggio = "Totale: " + OrdineGen.getOrdine().getTotale() + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 120 + SPAZIATURA * i);
-        appoggio = "Soldi forniti: " + ordinepersonale.getSoldiForniti() + " €";
+        appoggio = "Soldi forniti: " + OrdineGen.getOrdine().getSoldiForniti() + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio) - 5, 140 + SPAZIATURA * i);
-        appoggio = "Resto: " + ordinepersonale.getResto() + " €";
+        appoggio = "Resto: " + OrdineGen.getOrdine().getResto() + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 160 + SPAZIATURA * i);
 
         return PAGE_EXISTS;
@@ -106,10 +114,8 @@ public class Stampante implements Printable {
      * @param merenda Nome della merenda
      * @param prezzo Prezzo della merenda
      */
-    public void add(String merenda,int numero, float prezzo) {
-        merende.add(merenda);
-        numeri.add(numero);
-        prezzi.add(prezzo);
+    public void add(String merenda, float prezzo) {
+        this.OrdineGen.getOrdine().add(new Merenda(merenda,prezzo));
     }
 
     /**
@@ -154,19 +160,19 @@ public class Stampante implements Printable {
             JOptionPane.showMessageDialog(null, "Specificare un'aula prima della stampa", "Aula", 2);
             return;
         }
-        if (ordinepersonale.getSoldiForniti() == 0) {
+        if (OrdineGen.getOrdine().getSoldiForniti() == 0) {
             JOptionPane.showMessageDialog(null, "Specificare i soldi forniti prima della stampa", "Soldi Forniti", 2);
             return;
         }
-        if (merende.size() == 0) {
+        if (OrdineGen.getOrdine().getMerendeOrdinate().size() == 0) {
             JOptionPane.showMessageDialog(null, "Specificare una merenda prima della stampa", "Merenda", 2);
             return;
         }
-        if(ordinepersonale.getNomeAcquirente()==null){
+        if(OrdineGen.getOrdine().getNomeAcquirente()==null){
             JOptionPane.showMessageDialog(null, "Specificare il nome acquirente", "Nome acquirente", 2);
             return;           
         }
-        if(ordinepersonale.getMerendeOrdinate()==null){
+        if(OrdineGen.getOrdine().getMerendeOrdinate()==null){
             JOptionPane.showMessageDialog(null, "Specificare le merende ordinate", "merende ordinate", 2);
             return;           
         }  
@@ -185,10 +191,9 @@ public class Stampante implements Printable {
         classe = null;
         data = null;
         aula = null;
-        merende.clear();
-        prezzi.clear();
     }
 
+        
     /**
      * Main di prova per la classe stampante
      * @param args the command line arguments
@@ -206,15 +211,10 @@ public class Stampante implements Printable {
         st.addData(d);
         st.addClasse("4B Info");
         st.addAula("216");
-        st.add("Cotoletta",2, 5.80f);
-        st.add("Hot-Dog",1, 1.20f);
-        st.add("Forno",3, 3.00f);
-        st.add("Piadina",4, 2.50f);
-        o.setSoldiForniti(4.2f);
-        o.setResto();
-        o.getResto();
-        o.setMerendeOrdinate(l);
-        st.setStampaOrdine(o);
+        st.getOrdineGen().getOrdine().add(new Merenda("Cotoletta",5.80f));
+        st.getOrdineGen().getOrdine().add(new Merenda("Hot-Dog",1.20f));
+        st.getOrdineGen().getOrdine().add(new Merenda("Panino",3.60f));;
+        st.getOrdineGen().getOrdine().add(new Merenda("Piadina",2.500f));
         st.print();
         // Crea im ordine personale
         //Chioai

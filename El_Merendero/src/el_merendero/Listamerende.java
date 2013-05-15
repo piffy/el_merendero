@@ -23,6 +23,26 @@ public class Listamerende {
         next=null;
     }
 
+    public int ContMerenda(Merenda m){
+        Listamerende comodo = this.next;
+        int tot = 0;
+        while (comodo != null) {
+            if (comodo.getProdotto()==m)
+                tot++;
+            comodo = comodo.getNext();
+        }
+        return tot;
+    }
+    public int NumMerende(){
+        Listamerende comodo = this.next;
+        int tot = 0;
+        while (comodo != null) {
+            tot++;
+            comodo = comodo.getNext();
+        }
+        return tot;
+    }
+    
     public void add(Merenda m) {
         Listamerende comodo = this;
         while (comodo.getNext() != null) {
