@@ -20,7 +20,7 @@ public class El_Merendero {
      */
     public static void main(String[] args) {
         Frame fr=new Frame();
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fr.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         fr.setSize(800, 600);
         fr.setVisible(true);
     }

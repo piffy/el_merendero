@@ -95,6 +95,8 @@ public class ListaClassiHardwired {
     }
     
     
+    
+    
   /*  @Override
     public String toString(){
         String s = "";
@@ -103,4 +105,8 @@ public class ListaClassiHardwired {
         }
         return s;
     }*/
+
+    public String[] getNomiClassi() {
+        return NomiClassi;
+    }
 }
