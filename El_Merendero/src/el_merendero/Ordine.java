@@ -4,29 +4,33 @@
  */
 package el_merendero;
 
+import java.util.LinkedList;
+
 /**
  *
  * @author b11g12
  */
-public class Ordine {
+public class Ordine extends LinkedList<Merenda>{
 
     private String NomeAcquirente;
     private float SoldiForniti;
-    private Listamerende MerendeOrdinate;
+    private LinkedList<Merenda> MerendeOrdinate;
     private float resto;
 
+   
+    
     public float getResto() {
         return resto;
     }
 
     public void setResto() {
         if (this.ControlloGiustoImporto()) {
-            resto = (float) SoldiForniti - MerendeOrdinate.getTotale();
+            resto = (float) SoldiForniti - getTotale();
         }
     }
 
     public boolean ControlloGiustoImporto() {
-        if (SoldiForniti < MerendeOrdinate.getTotale()) {
+        if (SoldiForniti < getTotale()) {
             return false;
         } else {
             return true;
@@ -35,14 +39,17 @@ public class Ordine {
 
     public Ordine(String NomeAcquirente) {
         this.NomeAcquirente = NomeAcquirente;
-        MerendeOrdinate = new Listamerende();
+        MerendeOrdinate = new LinkedList<Merenda>();
     }
 
-    public Listamerende getMerendeOrdinate() {
+    public Ordine() {
+    }
+
+    public LinkedList<Merenda> getMerendeOrdinate() {
         return MerendeOrdinate;
     }
 
-    public void setMerendeOrdinate(Listamerende MerendeOrdinate) {
+    public void setMerendeOrdinate(LinkedList<Merenda> MerendeOrdinate) {
         this.MerendeOrdinate = MerendeOrdinate;
     }
 
@@ -62,9 +69,17 @@ public class Ordine {
         this.SoldiForniti = SoldiForniti;
     }
 
+    public float getTotale() {
+        float tot = 0f;
+        for (Merenda m : MerendeOrdinate) {
+            tot += m.getPrezzo();
+        }
+        return tot;
+    }
+
     @Override
     public String toString() {
         return NomeAcquirente + "\n" + MerendeOrdinate;
     }
-    
+
 }

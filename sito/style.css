@@ -1,0 +1,250 @@
+/*DOCUMENTO CSS*/
+/*******************/
+/***** I FONTS *****/
+/*******************/
+@font-face
+{
+font-family: forque;
+src: url('Forque.eot');
+src: url('Forque.eot?#iefix') format('embedded-opentype'),
+url('Forque.ttf')  format('truetype'), 
+url('Forque.ttf'),
+url('Forque.woff') format('woff');
+}
+
+@font-face
+{
+font-family: bodonitown;
+src: url('Bodonitown.eot');
+src: url('Bodonitown.eot?#iefix') format('embedded-opentype'),
+url('Bodonitown.ttf')  format('truetype'), 
+url('Bodonitown.ttf'),
+url('Bodonitown.woff') format('woff');
+}
+/***************************************************/
+
+* { 
+margin: 0; 
+padding: 0; 
+}
+
+html, body {
+text-align: center;
+}
+
+body {
+/*background-color:#F2EE76; */
+background-image:url("backmenu.png");
+overflow-x: hidden;
+}
+
+/************************/
+/******** LA HEAD *******/
+/************************/
+#head {
+text-align:left;
+height: 175px;
+width:100%;
+/*height: 175px;
+/*display: block; */
+background: url("foodcollage.jpg");
+border-bottom: 1px solid black; /*
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; */
+}
+/*****************************/
+/******* IMG DELLA HEAD ******/
+/*****************************/
+/*img.headimg {
+width:100%;
+height: 188px;"
+}
+
+@media handheld, only screen and (max-width: 400px){ 
+   header#head { 
+           display:none; 
+}
+} 
+/**********************/                        
+/****** I LOGHI *******/
+/**********************/ 
+img.logo {
+/*position: fixed;
+top: 0;
+left: 0;*/
+}
+
+img.footerlogo {
+/*position:fixed;
+left:30px;     */
+margin-top:30px;
+margin-left:15px;  
+}
+/*********************************************/
+/********* STILE DEI VARI DIV INTERNI ********/
+/*********************************************/
+div#headcontent {
+width:100%;
+/*background-color:brown;  */
+background-image:url("backhead.png");
+margin-top: 2px;
+}
+
+div#imgslider {
+height: inherit;
+}
+
+div#slider {
+width: 100%;
+height: inherit;
+}
+
+div#textslider {
+text-align:left;
+float: left;
+width: 40%;
+height: inherit;
+margin: 0 auto;
+background-color: rgba(0, 0, 0, 0.65);
+font-family:bodonitown;
+}
+
+/******************************/
+/********* BARRA MENU *********/
+/******************************/
+table.menu {
+text-align: center;
+font-size: 21px;
+position:relative;
+font-family:forque;
+margin-bottom: -2px;
+}
+
+td.menu {
+padding: 5px;
+padding-right:15px;
+padding-left:15px;
+background-color: transparent;
+-webkit-transition: 0.3s linear;
+-o-transition:0.3s linear;
+-moz-transition:0.3s linear;
+}
+
+td.menu:hover {
+color:#F2EE76;
+background-color: #AB3F36;
+}
+
+td#selected {
+color:#BCB95C;
+background-color: #541E1A;
+}
+
+a.menu{
+text-decoration:none;
+color:inherit;
+}
+/*****************************/
+/****** DIV CHE RISIZEANO ****/
+/*****************************/
+.container {
+float: left;
+width: 60%;
+height: inherit;
+margin: 0 auto;
+}
+.container img.wide {
+max-width: 100%;
+max-height: 100%;
+height: auto;
+min-width: 100%;
+min-height: 100%;
+}
+.container img.tall {
+max-height: 100%;
+max-width: 100%;
+width: auto;
+min-width: 100%;
+min-height: 100%;
+}
+/*************************/
+/******* I FOOTERS *******/
+/*************************/
+
+p.footerlinks {
+font-family:bodonitown;
+word-spacing: 3px;
+font-size: 14px;
+position: relative;
+left: 75px;
+top: -10px;
+}
+
+div.footercontent {
+text-align: left;
+}
+
+a.footerlink {
+text-decoration:none;
+color:black;
+}  
+
+a.footerlink:hover {
+text-decoration:underline;
+}
+/********************************/
+/***** IMMAGINI INTERATTIVE *****/
+/********************************/
+img#slideopz {
+position: relative; 
+top:-37px; 
+left:106px;
+}
+/****************************/
+/****** I TEXT SLIDERS ******/
+/****************************/
+
+h2.textslider {
+margin-left:20px;
+margin-top:20px;
+}
+
+p.textslider {
+margin-left:20px;
+margin-right:20px;
+font-size:17px;
+}
+/***************************/
+/***** IMAGINE INTERNA *****/
+/***************************/
+img.textlogo {
+height: 222px;
+width: 300px;
+margin-top:20px;
+margin-left:30px;
+margin-right:10px;
+}   
+img.photogallery {
+height: 222px;
+width: 300px;
+margin-top:20px;
+margin-left:10px;
+margin-right:10px;
+}
+/************************/
+/***** TESTO PAGINA *****/
+/************************/
+p.content {
+margin-left:30px;
+font-size:18px;
+font-family:bodonitown;
+margin-right:30px;
+}
+
+h1.content {
+margin-left:30px;
+font-family:bodonitown;
+padding-top:20px;
+}
