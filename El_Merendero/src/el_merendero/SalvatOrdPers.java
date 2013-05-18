@@ -26,11 +26,5 @@ public class SalvatOrdPers {
             System.exit(1);
         }
     }
-    public static void main (String args[]) {
-        Ordine prova1=new Ordine("Simone");
-        prova1.add(new Merenda("panino",2f,1));
-        prova1.add(new Merenda("pizza",1.5f,3));
-        prova1.add(new Merenda("pizza",1.5f,1));
-        SalvatOrdPers.Salvataggio(prova1);
-    }
+
 }
