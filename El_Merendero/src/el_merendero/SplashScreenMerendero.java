@@ -20,20 +20,21 @@ import javax.swing.Timer;
  */
 public class SplashScreenMerendero extends JWindow {
 
-    JProgressBar pg = new JProgressBar();
+    JProgressBar pg = new JProgressBar(0,100);
     Timer timer;
     int times = 0;
+    final int MAX = 100;
     
     public SplashScreenMerendero(final Frame f){
         pg.setBorderPainted(true);
         pg.setForeground(Color.green);
         
-        timer = new Timer(50, new ActionListener() {
+        timer = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 times++;
                 pg.setValue(times);
-                if ( times* timer.getDelay() == 5000) {
+                if ( pg.getValue() == MAX ) {
                     dispose();
                     timer.stop();
                     

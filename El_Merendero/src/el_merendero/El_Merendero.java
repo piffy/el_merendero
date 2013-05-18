@@ -21,6 +21,11 @@ public class El_Merendero {
         Frame fr=new Frame();
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setSize(800, 600);
-        fr.setVisible(true);
+        fr.setLocationRelativeTo(null);
+        
+        SplashScreenMerendero splash = new SplashScreenMerendero(fr);
+        splash.setSize(700,438);
+        splash.setLocationRelativeTo(null);
+        splash.setVisible(true);
     }
 }
