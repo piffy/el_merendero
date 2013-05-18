@@ -34,7 +34,8 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
     public String toString() {
         String s = classe + "\n";
         for (Ordine o : this) {
-            s += "Ordine: " + o + "\n";
+            s += "Ordine: " + o ;
+            s += "--------------------\n";
         }
         return s;
     }
