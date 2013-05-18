@@ -14,6 +14,14 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
 
     private String classe;
 
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
+    }
+
     public OrdineDiClasse() throws Exception {
         throw new Exception("L'ordine deve contenere il nome della classe.");
     }
