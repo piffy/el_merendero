@@ -4,6 +4,7 @@
  */
 package el_merendero;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 
 /**
@@ -13,6 +14,24 @@ import java.util.LinkedList;
 public class OrdineDiClasse extends LinkedList<Ordine> {
 
     private String classe;
+    private String aula;
+    private Calendar data;
+
+    public String getAula() {
+        return aula;
+    }
+
+    public void setAula(String aula) {
+        this.aula = aula;
+    }
+
+    public Calendar getData() {
+        return data;
+    }
+
+    public void setData(Calendar data) {
+        this.data = data;
+    }
 
     public OrdineDiClasse() throws Exception {
         throw new Exception("L'ordine deve contenere il nome della classe.");
@@ -28,6 +47,14 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
             tot += o.getTotale();
         }
         return tot;
+    }
+
+    public String getClasse() {
+        return classe;
+    }
+
+    public void setClasse(String classe) {
+        this.classe = classe;
     }
 
     @Override
