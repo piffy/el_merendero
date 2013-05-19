@@ -6,7 +6,10 @@ package el_merendero;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -23,6 +26,7 @@ public class FrameOrdine extends JFrame {
     JButton cmdPaniniMeno[];
     JCheckBox ckbPaniniMaio[];
     JCheckBox ckbPaniniKetchup[];
+    JButton cmdStampa;
     OrdineDiClasse ordine;
     JLabel lblPanini[];
     String names[];
@@ -50,12 +54,14 @@ public class FrameOrdine extends JFrame {
         ckbPaniniMaio = new JCheckBox[n];
         ckbPaniniKetchup = new JCheckBox[n];
         lblPanini = new JLabel[n];
+        cmdStampa = new JButton();
         //Inizializzazione varie proprietà grafiche
 
         this.setFont(new Font("Segoe UI", Font.PLAIN, 20));
         Gestore al = new Gestore();
         CambiaQuantita aq = new CambiaQuantita();
         OperazioneEseguita oe = new OperazioneEseguita();
+        Stampa st = new Stampa();
 
         //Inserimento dei componenti per la gestione dell'ordine
 
@@ -69,6 +75,7 @@ public class FrameOrdine extends JFrame {
             cmdPaniniDone[i] = new JButton("Fatto");
             ckbPaniniMaio[i] = new JCheckBox("Maio");
             ckbPaniniKetchup[i] = new JCheckBox("Ketchup");
+            cmdStampa = new JButton("Stampa");
 
             rdbPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             txtPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
@@ -76,12 +83,14 @@ public class FrameOrdine extends JFrame {
             cmdPaniniDone[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniMaio[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniKetchup[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            cmdStampa.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
             group.add(rdbPanini[i]);
             rdbPanini[i].addActionListener(al);
             cmdPaniniPiu[i].addActionListener(aq);
             cmdPaniniMeno[i].addActionListener(aq);
             cmdPaniniDone[i].addActionListener(oe);
+            cmdStampa.addActionListener(st);
 
             rdbPanini[i].setBounds(new Rectangle(new Point(1, 1), rdbPanini[i].getPreferredSize()));
             cmdPaniniPiu[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniPiu[i].getPreferredSize()));
@@ -91,6 +100,7 @@ public class FrameOrdine extends JFrame {
             cmdPaniniDone[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniDone[i].getPreferredSize()));
             ckbPaniniMaio[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniMaio[i].getPreferredSize()));
             ckbPaniniKetchup[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniKetchup[i].getPreferredSize()));
+            cmdStampa.setBounds(new Rectangle(new Point(1, 1), cmdStampa.getPreferredSize()));
 
             rdbPanini[i].setLocation(x, y += 60);
             cmdPaniniPiu[i].setLocation(rdbPanini[i].getX() + 300, rdbPanini[i].getY() + 3);
@@ -100,6 +110,7 @@ public class FrameOrdine extends JFrame {
             cmdPaniniDone[i].setLocation(lblPanini[i].getX() + 100, rdbPanini[i].getY());
             ckbPaniniMaio[i].setLocation(rdbPanini[i].getX() + 20, rdbPanini[i].getY() + 30);
             ckbPaniniKetchup[i].setLocation(ckbPaniniMaio[i].getX() + 100, ckbPaniniMaio[i].getY());
+            cmdStampa.setLocation(670, 520);
 
             cmdPaniniPiu[i].setSize(45, 25);
             cmdPaniniMeno[i].setSize(45, 25);
@@ -112,6 +123,7 @@ public class FrameOrdine extends JFrame {
             cmdPaniniDone[i].setVisible(false);
             ckbPaniniMaio[i].setVisible(false);
             ckbPaniniKetchup[i].setVisible(false);
+            //cmdPaniniDone[i].setVisible(false);
 
             panel.add(rdbPanini[i]);
             panel.add(cmdPaniniPiu[i]);
@@ -121,6 +133,7 @@ public class FrameOrdine extends JFrame {
             panel.add(cmdPaniniDone[i]);
             panel.add(ckbPaniniMaio[i]);
             panel.add(ckbPaniniKetchup[i]);
+            panel.add(cmdStampa);
         }
 
     }
@@ -204,6 +217,21 @@ public class FrameOrdine extends JFrame {
             txtPanini[k].setText("1");
             ckbPaniniMaio[k].setSelected(false);
             ckbPaniniKetchup[k].setSelected(false);
+            System.out.println(ordine);
+        }
+    }
+    
+    private class Stampa implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                Stampante st = new Stampante();
+                st.stampaOrdine(ordine);
+                st.print();
+            } catch (PrinterException ex) {
+                Logger.getLogger(FrameOrdine.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 
