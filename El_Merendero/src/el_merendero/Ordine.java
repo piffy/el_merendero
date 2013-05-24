@@ -57,7 +57,7 @@ public class Ordine extends LinkedList<Merenda> {
     public float getTotale() {
         float tot = 0f;
         for (Merenda m : this) {
-            tot += m.getPrezzo();
+            tot += m.getPrezzo()*m.getNumero();
         }
         return tot;
     }
