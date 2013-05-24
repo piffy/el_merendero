@@ -24,6 +24,7 @@ public class FrameClasseStudente extends JFrame {
     private JComboBox boxStudenti;
     private String nomiClassi[];
     private String nomiStudenti[];
+    private final String Aula[] = {"Aula 121","Aula 214","Aula 123","Aula 244","Aula 221","Aula 414","Aula 231","Aula 214","Aula 121","Aula 214","Aula 121","Aula 214"};
     private JButton cmdFatto;
     private JButton cmdIndietro;
     private ListaClassiHardwired list;
@@ -31,6 +32,7 @@ public class FrameClasseStudente extends JFrame {
     private JPanel Studenti = new JPanel();
     private String Classe;
     private String Studente;
+    private JLabel AulaN;
 
     public FrameClasseStudente() {
         super("El_Merendero");
@@ -43,15 +45,19 @@ public class FrameClasseStudente extends JFrame {
         list = new ListaClassiHardwired();
 
         nomiClassi = list.getNomiClassi();
-
         nomiStudenti = list.ListaStudentiXClasseData(nomiClassi[0]);
         Classe = nomiClassi[0];
+        AulaN = new JLabel( Aula[0]);
         boxStudenti = new JComboBox(nomiStudenti); //set up JComboBox
         boxClassi = new JComboBox(nomiClassi); // set up JComboBox
         boxClassi.setMaximumRowCount(10);
         boxStudenti.setMaximumRowCount(15);
         Classi.add(boxClassi);
-        add(Classi, BorderLayout.NORTH);
+        Box vertical = Box.createVerticalBox();
+        vertical.add(Classi);
+        vertical.add(Box.createVerticalGlue());
+        vertical.add(AulaN);
+        add(vertical, BorderLayout.NORTH);
         Studenti.add(boxStudenti);
         add(Studenti, BorderLayout.CENTER);
         boxClassi.addItemListener(new ItemListener() {
@@ -63,11 +69,10 @@ public class FrameClasseStudente extends JFrame {
                     nomiStudenti = list.ListaStudentiXClasseData(e.getItem().toString());
                     Classe = e.getItem().toString();
                     boxStudenti.removeAllItems();
+                    AulaN.setText(Aula[boxClassi.getSelectedIndex()]);
                     for (int i = 0; i < nomiStudenti.length; i++) {
                         boxStudenti.addItem(nomiStudenti[i]);
                     }
-                    Studenti.add(boxStudenti);
-                    add(Studenti, BorderLayout.CENTER);
                 }
             } // end method itemStateChanged
         } // end anonymous inner class
