@@ -81,4 +81,16 @@ public class Merenda {
         return s;
         //return "Merenda{" + "nome=" + nome + ", prezzo=" + prezzo + ", numero=" + numero + ", condimenti=" + condimenti + '}';
     }
+    
+    public String stampaSenzaPrezzo() {
+        String s = numero + "x " + nome;
+        if (condimenti[0] == true) {
+            s += " + Maio";
+        }
+        if (condimenti[1] == true) {
+            s += " + Ketchup";
+        }
+        return s;
+        //return "Merenda{" + "nome=" + nome + ", prezzo=" + prezzo + ", numero=" + numero + ", condimenti=" + condimenti + '}';
+    }
 }
