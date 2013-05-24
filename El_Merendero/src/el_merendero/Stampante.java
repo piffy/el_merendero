@@ -14,7 +14,6 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.LinkedList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -27,23 +26,14 @@ public class Stampante implements Printable {
     private final int MARGINE = 150;
     private final int MARGINE_DESTRO = 500;
     private final int SPAZIATURA = 15;
-    private LinkedList<String> merende;
-    private LinkedList<Integer> numeri;
-    private LinkedList<Float> prezzi;
+    private OrdineDiClasse ordine;
     private Image image1;
     private Image image2;
-    private String classe;
-    private String aula;
-    private Calendar data;
-    private float soldiForniti;
 
     /**
      * Costruttore di default che istanzia le liste e carica il logo
      */
     public Stampante() {
-        merende = new LinkedList<String>();
-        numeri = new LinkedList<Integer>();
-        prezzi = new LinkedList<Float>();
         image1 = new ImageIcon(this.getClass().getResource("Logo.jpg")).getImage();
     }
 
@@ -67,136 +57,74 @@ public class Stampante implements Printable {
 
         FontMetrics fm = g.getFontMetrics();
         String appoggio;
-        appoggio = "Classe " + classe;
+        appoggio = "Classe " + ordine.getClasse();
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 50);
-        appoggio = data.get(Calendar.HOUR_OF_DAY) + ":" + data.get(Calendar.MINUTE) + " " + data.get(Calendar.DATE) + "/" + data.get(Calendar.MONTH) + "/" + data.get(Calendar.YEAR);
+        appoggio = ordine.getData().get(Calendar.HOUR_OF_DAY) + ":" + ordine.getData().get(Calendar.MINUTE) + " " + ordine.getData().get(Calendar.DATE) + "/" + ordine.getData().get(Calendar.MONTH) + "/" + ordine.getData().get(Calendar.YEAR);
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 65);
-        appoggio = "Aula " + aula;
+        appoggio = "Aula " + ordine.getAula();
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 80);
+        if(ordine.size() == 1){
+            appoggio = "Studente " + ordine.getFirst().getNomeAcquirente();
+            g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 95);
+        }
 
-        float totale = 0;
         int i;
-        for (i = 0; i < merende.size(); i++) {
-            appoggio = prezzi.get(i) + " €";
+        for (i = 0; i < ordine.getFirst().size(); i++) {
+            appoggio = ordine.getFirst().get(i).getPrezzo() + " €";
             g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 120 + SPAZIATURA * i);
             int lungi = fm.stringWidth(appoggio);
-            appoggio = numeri.get(i) + " - " + merende.get(i);
+            appoggio = ordine.getFirst().get(i).stampaSenzaPrezzo();
             while (MARGINE_DESTRO - MARGINE - fm.stringWidth(appoggio) - lungi > 10) {
                 appoggio += ".";
             }
             g.drawString(appoggio, MARGINE, 120 + SPAZIATURA * i);
-            totale += prezzi.get(i);
         }
         g.setFont(new Font("suns", Font.BOLD, 12));
-        appoggio = "Totale: " + totale + " €";
+        appoggio = "Totale: " + ordine.getTotale() + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 120 + SPAZIATURA * i);
-        appoggio = "Soldi forniti: " + soldiForniti + " €";
+        appoggio = "Soldi forniti: " + ordine.getFirst().getSoldiForniti() + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio) - 5, 140 + SPAZIATURA * i);
-        appoggio = "Resto: " + (soldiForniti - totale) + " €";
+        appoggio = "Resto: " + (ordine.getFirst().getSoldiForniti() - ordine.getTotale()) + " €";
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 160 + SPAZIATURA * i);
 
         return PAGE_EXISTS;
     }
 
-    /**
-     * Metodo che aggiunge una merenda all'ordine
-     *
-     * @param merenda Nome della merenda
-     * @param prezzo Prezzo della merenda
-     */
-    public void add(String merenda, int numero, float prezzo) {
-        merende.add(merenda);
-        numeri.add(numero);
-        prezzi.add(prezzo);
-    }
-
-    /**
-     * Metodo obbligatorio che aggiunge il nome della classe all'ordine
-     *
-     * @param classe Nome della classe
-     */
-    public void addClasse(String classe) {
-        this.classe = classe;
-    }
-
-    /**
-     * Metodo obbligatorio che aggiunge il l'ora della consegna all'ordine
-     *
-     * @param data Giorno e ora della consegna dell'ordine
-     */
-    public void addData(GregorianCalendar data) {
-        this.data = data;
-    }
-
-    /**
-     * Metodo obbligatorio che aggiunge l'aula della consegna all'ordine
-     *
-     * @param aula Aula della consegna
-     */
-    public void addAula(String aula) {
-        this.aula = aula;
-    }
-
-    /**
-     * Metodo obbligatorio che aggiunge i soldi forniti all'ordine
-     *
-     * @param soldiForniti valore float dei soldi forniti
-     */
-    public void addSoldiForniti(float soldiForniti) {
-        this.soldiForniti = soldiForniti;
-    }
-
     void print() throws PrinterException {
-        if (classe == null) {
+        if (ordine == null) {
+            JOptionPane.showMessageDialog(null, "Speficiare un ordine prima della stampa", "Ordine", 2);
+            return;
+        }
+        if (ordine.getClasse() == null) {
             JOptionPane.showMessageDialog(null, "Speficiare una classe prima della stampa", "Classe", 2);
             return;
         }
-        if (data == null) {
+        if (ordine.getData() == null) {
             JOptionPane.showMessageDialog(null, "Speficiare una data prima della stampa", "Data", 2);
             return;
         }
-        if (aula == null) {
+        if (ordine.getAula() == null) {
             JOptionPane.showMessageDialog(null, "Speficiare un'aula prima della stampa", "Aula", 2);
             return;
         }
-        if (soldiForniti == 0) {
+        if (ordine.getFirst().getSoldiForniti() == 0) {
             JOptionPane.showMessageDialog(null, "Speficiare i soldi forniti prima della stampa", "Soldi Forniti", 2);
             return;
         }
-        if (merende.size() == 0) {
+        if (ordine.getFirst().size() == 0) {
             JOptionPane.showMessageDialog(null, "Speficiare una merenda prima della stampa", "Merenda", 2);
             return;
         }
-        // Creates and returns a PrinterJob which is initially associated with the default printer.
         PrinterJob pj = PrinterJob.getPrinterJob();
-        // Sets the name of the document to be printed.
         pj.setJobName("TestStampa");
-        // Presents a dialog to the user for changing the properties of the print job.
-        pj.printDialog();
-        // Calls painter to render the pages.
         pj.setPrintable(this);
-
-        pj.print();
-
-        classe = null;
-        data = null;
-        aula = null;
-        soldiForniti = 0;
-        merende.clear();
-        prezzi.clear();
+        if (pj.printDialog()) {
+            pj.print();
+        }
     }
 
-    public void stampaOrdine(OrdineDiClasse odc) {
-        GregorianCalendar d = new GregorianCalendar();
-        addData(d);
-        addClasse(odc.getClasse());
-        addAula("000");
-        addSoldiForniti(99.99f);
-        for (Ordine o : odc) {
-            for (Merenda m : o) {
-                this.add(m.getNome(),m.getNumero(), m.getPrezzo());
-            }
-        }
+    public void setOrdine(OrdineDiClasse ordine) {
+        this.ordine = ordine;
     }
 
     /**
@@ -208,14 +136,19 @@ public class Stampante implements Printable {
     public static void main(String[] args) throws PrinterException {
         Stampante st = new Stampante();
         GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
-        st.addData(d);
-        st.addClasse("4B Info");
-        st.addAula("216");
-        st.addSoldiForniti(17.5f);
-        st.add("Cotoletta", 2, 5.80f);
-        st.add("Hot-Dog", 1, 1.20f);
-        st.add("Forno", 3, 3.00f);
-        st.add("Piadina", 4, 2.50f);
+        OrdineDiClasse odc = new OrdineDiClasse("4B Info");
+        odc.add(new Ordine("Manfredini"));
+        odc.setData(d);
+        odc.setClasse("4B Info");
+        odc.setAula("216");
+        odc.getFirst().setSoldiForniti(17.5f);
+        boolean[] cond = new boolean[2];
+        cond[1] = true;
+        odc.getFirst().add(new Merenda("Cotoletta", 5.80f, 2));
+        odc.getFirst().add(new Merenda("Hot-Dog", 1.20f, 1, cond));
+        odc.getFirst().add(new Merenda("Forno", 3.00f, 3));
+        odc.getFirst().add(new Merenda("Piadina", 2.50f, 4));
+        st.setOrdine(odc);
         st.print();
     }
 }
