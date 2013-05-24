@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -217,17 +218,19 @@ public class FrameOrdine extends JFrame {
             txtPanini[k].setText("1");
             ckbPaniniMaio[k].setSelected(false);
             ckbPaniniKetchup[k].setSelected(false);
-            System.out.println(ordine);
         }
     }
-    
+
     private class Stampa implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
                 Stampante st = new Stampante();
-                st.stampaOrdine(ordine);
+                GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
+                ordine.setData(d);
+                ordine.getFirst().setSoldiForniti(17.5f);
+                st.setOrdine(ordine);
                 st.print();
             } catch (PrinterException ex) {
                 Logger.getLogger(FrameOrdine.class.getName()).log(Level.SEVERE, null, ex);
