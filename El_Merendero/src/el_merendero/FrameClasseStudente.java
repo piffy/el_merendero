@@ -24,6 +24,7 @@ public class FrameClasseStudente extends JFrame {
     private JComboBox boxStudenti;
     private String nomiClassi[];
     private String nomiStudenti[];
+    private final String Aule[] = {"Aula 121","Aula 214","Aula 123","Aula 244","Aula 221","Aula 414","Aula 231","Aula 214","Aula 121","Aula 214","Aula 121","Aula 214"};
     private JButton cmdFatto;
     private JButton cmdIndietro;
     private ListaClassiHardwired list;
@@ -31,6 +32,8 @@ public class FrameClasseStudente extends JFrame {
     private JPanel Studenti = new JPanel();
     private String Classe;
     private String Studente;
+    private String Aula;
+    private JComboBox AulaN;
 
     public FrameClasseStudente() {
         super("El_Merendero");
@@ -43,15 +46,21 @@ public class FrameClasseStudente extends JFrame {
         list = new ListaClassiHardwired();
 
         nomiClassi = list.getNomiClassi();
-
         nomiStudenti = list.ListaStudentiXClasseData(nomiClassi[0]);
         Classe = nomiClassi[0];
+        Aula = Aule[0];
+        Studente = nomiStudenti[0];
+        AulaN = new JComboBox(Aule);
         boxStudenti = new JComboBox(nomiStudenti); //set up JComboBox
         boxClassi = new JComboBox(nomiClassi); // set up JComboBox
         boxClassi.setMaximumRowCount(10);
         boxStudenti.setMaximumRowCount(15);
         Classi.add(boxClassi);
-        add(Classi, BorderLayout.NORTH);
+        Box vertical = Box.createVerticalBox();
+        vertical.add(Classi);
+        vertical.add(Box.createVerticalGlue());
+        vertical.add(AulaN);
+        add(vertical, BorderLayout.NORTH);
         Studenti.add(boxStudenti);
         add(Studenti, BorderLayout.CENTER);
         boxClassi.addItemListener(new ItemListener() {
@@ -66,8 +75,6 @@ public class FrameClasseStudente extends JFrame {
                     for (int i = 0; i < nomiStudenti.length; i++) {
                         boxStudenti.addItem(nomiStudenti[i]);
                     }
-                    Studenti.add(boxStudenti);
-                    add(Studenti, BorderLayout.CENTER);
                 }
             } // end method itemStateChanged
         } // end anonymous inner class
@@ -77,6 +84,14 @@ public class FrameClasseStudente extends JFrame {
             public void itemStateChanged(ItemEvent e) {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     Studente = e.getItem().toString();
+                }
+            }
+        });
+        AulaN.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    Aula = e.getItem().toString();
                 }
             }
         });
@@ -106,6 +121,7 @@ public class FrameClasseStudente extends JFrame {
                             FrameClasseStudente.this.setVisible(false);
                             OrdineDiClasse odc = new OrdineDiClasse(Classe);
                             odc.add(new Ordine(Studente));
+                            odc.setAula(Aula.substring(5));
                             FrameOrdine fb = new FrameOrdine(odc);
                             fb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             fb.setSize(800, 600); // set frame size
