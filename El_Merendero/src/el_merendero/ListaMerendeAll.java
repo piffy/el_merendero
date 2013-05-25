@@ -27,7 +27,8 @@ public class ListaMerendeAll {
         String s;
         prodotti = new String[30];
         prezzi = new float[30];
-        BufferedReader reader = new BufferedReader(new FileReader("config\\merende\\".concat("merende.txt")));
+        // NOTA: Non mettete i path in stile windows. Java è in grado di utilizzare lo stile Unix/web
+        BufferedReader reader = new BufferedReader(new FileReader("config/merende/".concat("merende.txt")));
         try {
             while ((s = reader.readLine()) != null) {
                 if (i % 2 != 0) {

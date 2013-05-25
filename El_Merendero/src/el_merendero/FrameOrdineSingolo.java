@@ -22,6 +22,7 @@ public class FrameOrdineSingolo extends JFrame {
     JPanel panel = new JPanel();
     JRadioButton rdbPanini[];
     JTextField txtPanini[];
+    JTextField txtsoldiforniti;
     JButton cmdPaniniDone[];
     JButton cmdPaniniPiu[];
     JButton cmdPaniniMeno[];
@@ -30,7 +31,9 @@ public class FrameOrdineSingolo extends JFrame {
     JButton cmdStampa;
     OrdineDiClasse ordine;
     JLabel lblPanini[];
+    JLabel lblsoldif;
     String names[];
+    Float soldifor;
     float prezzi[];
     ButtonGroup group = new ButtonGroup();
     int x = 20, y = 0;
@@ -49,12 +52,14 @@ public class FrameOrdineSingolo extends JFrame {
         int n = names.length;
         rdbPanini = new JRadioButton[n];
         txtPanini = new JTextField[n];
+        txtsoldiforniti=new JTextField();
         cmdPaniniDone = new JButton[n];
         cmdPaniniPiu = new JButton[n];
         cmdPaniniMeno = new JButton[n];
         ckbPaniniMaio = new JCheckBox[n];
         ckbPaniniKetchup = new JCheckBox[n];
         lblPanini = new JLabel[n];
+        lblsoldif=new JLabel();
         cmdStampa = new JButton();
         //Inizializzazione varie proprietà grafiche
 
@@ -72,7 +77,9 @@ public class FrameOrdineSingolo extends JFrame {
             cmdPaniniPiu[i] = new JButton("+");
             cmdPaniniMeno[i] = new JButton("-");
             txtPanini[i] = new JTextField("1");
+            txtsoldiforniti=new JTextField("0");
             lblPanini[i] = new JLabel("Prezzo : " + prezzi[i]);
+            lblsoldif=new JLabel("Inserisci soldi forniti ");
             cmdPaniniDone[i] = new JButton("Fatto");
             ckbPaniniMaio[i] = new JCheckBox("Maio");
             ckbPaniniKetchup[i] = new JCheckBox("Ketchup");
@@ -80,7 +87,9 @@ public class FrameOrdineSingolo extends JFrame {
 
             rdbPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             txtPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtsoldiforniti.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             lblPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            lblsoldif.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             cmdPaniniDone[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniMaio[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniKetchup[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
@@ -97,7 +106,9 @@ public class FrameOrdineSingolo extends JFrame {
             cmdPaniniPiu[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniPiu[i].getPreferredSize()));
             cmdPaniniMeno[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniMeno[i].getPreferredSize()));
             txtPanini[i].setBounds(new Rectangle(new Point(1, 1), txtPanini[i].getPreferredSize()));
+            txtsoldiforniti.setBounds(new Rectangle(new Point(1, 1), txtsoldiforniti.getPreferredSize()));
             lblPanini[i].setBounds(new Rectangle(new Point(1, 1), lblPanini[i].getPreferredSize()));
+            lblsoldif.setBounds(new Rectangle(new Point(1, 1), lblsoldif.getPreferredSize()));
             cmdPaniniDone[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniDone[i].getPreferredSize()));
             ckbPaniniMaio[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniMaio[i].getPreferredSize()));
             ckbPaniniKetchup[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniKetchup[i].getPreferredSize()));
@@ -107,16 +118,19 @@ public class FrameOrdineSingolo extends JFrame {
             cmdPaniniPiu[i].setLocation(rdbPanini[i].getX() + 300, rdbPanini[i].getY() + 3);
             cmdPaniniMeno[i].setLocation(cmdPaniniPiu[i].getX() + 45, rdbPanini[i].getY() + 3);
             txtPanini[i].setLocation(cmdPaniniMeno[i].getX() + 100, rdbPanini[i].getY() + 3);
+           // txtsoldiforniti.setLocation(txtsoldiforniti.getX() + 100, rdbPanini[i].getY() + 3);
             lblPanini[i].setLocation(txtPanini[i].getX() + 50, rdbPanini[i].getY() + 3);
             cmdPaniniDone[i].setLocation(lblPanini[i].getX() + 100, rdbPanini[i].getY());
             ckbPaniniMaio[i].setLocation(rdbPanini[i].getX() + 20, rdbPanini[i].getY() + 30);
             ckbPaniniKetchup[i].setLocation(ckbPaniniMaio[i].getX() + 100, ckbPaniniMaio[i].getY());
             cmdStampa.setLocation(670, 520);
-
+            txtsoldiforniti.setLocation(670, 470);
+            lblsoldif.setLocation(490, 470);
+            
             cmdPaniniPiu[i].setSize(45, 25);
             cmdPaniniMeno[i].setSize(45, 25);
             txtPanini[i].setSize(30, 25);
-
+            txtsoldiforniti.setSize(85,25);
             cmdPaniniPiu[i].setVisible(false);
             cmdPaniniMeno[i].setVisible(false);
             txtPanini[i].setVisible(false);
@@ -130,6 +144,8 @@ public class FrameOrdineSingolo extends JFrame {
             panel.add(cmdPaniniPiu[i]);
             panel.add(cmdPaniniMeno[i]);
             panel.add(txtPanini[i]);
+            panel.add(txtsoldiforniti);
+            panel.add(lblsoldif);
             panel.add(lblPanini[i]);
             panel.add(cmdPaniniDone[i]);
             panel.add(ckbPaniniMaio[i]);
@@ -215,6 +231,8 @@ public class FrameOrdineSingolo extends JFrame {
             boolean cond[] = {ckbPaniniMaio[k].isSelected(), ckbPaniniKetchup[k].isSelected()};
             Merenda m = new Merenda(names[k], prezzi[k], Integer.parseInt(txtPanini[k].getText()), cond);
             ordine.getFirst().addMerenda(m);
+            
+           ordine.getFirst().setSoldiForniti(Float.parseFloat(txtsoldiforniti.toString()));
             txtPanini[k].setText("1");
             ckbPaniniMaio[k].setSelected(false);
             ckbPaniniKetchup[k].setSelected(false);
@@ -225,11 +243,16 @@ public class FrameOrdineSingolo extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            System.out.println(txtsoldiforniti);
             try {
+                
                 Stampante st = new Stampante();
+                GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
+                ordine.setData(d);
                 ordine.getFirst().setSoldiForniti(17.5f);
                 st.setOrdine(ordine);
                 st.print();
+                
             } catch (PrinterException ex) {
                 Logger.getLogger(FrameOrdineSingolo.class.getName()).log(Level.SEVERE, null, ex);
             }
