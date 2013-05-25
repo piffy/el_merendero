@@ -44,6 +44,7 @@ public class Frame extends JFrame {
     private JButton ordineSingolo = new JButton("Ordine singolo");
     private JLabel lblStampa = new JLabel("Anteprima di stampa:");
     private JLabel lblStato;
+    private JLabel lblTitolo=new JLabel("Ordina la tua merenda");
 
     /**
      * Metodo Costruttore del form iniziale. 
@@ -56,9 +57,18 @@ public class Frame extends JFrame {
         setLayout(new BorderLayout());
         lblStato = new JLabel("Sposta il mouse su un componente per avere le sue caretteristiche");
         add(lblStato, BorderLayout.SOUTH);
+        ordineClasse.setFont(new Font("Segoe UI", Font.PLAIN, 25));
+        ordineSingolo.setFont(new Font("Segoe UI", Font.PLAIN, 25));
+        lblTitolo.setFont(new Font("Segoe UI", Font.PLAIN, 35));
         lblStato.setBorder(BorderFactory.createLineBorder(Color.black));
+        lblTitolo.setForeground(Color.BLUE);
         Box horizontal = Box.createHorizontalBox();
+        Box vertical=Box.createVerticalBox();
+        vertical.add(Box.createVerticalGlue());
         horizontal.add(Box.createHorizontalGlue());
+        vertical.add(lblTitolo);
+        vertical.add(Box.createRigidArea(new Dimension(8, 50)));
+        vertical.add(horizontal);
         horizontal.add(ordineClasse);
         BottoneListener bl=new BottoneListener();
         ListenerBotton lb=new ListenerBotton();
@@ -67,10 +77,13 @@ public class Frame extends JFrame {
         add(ordineSingolo);
         horizontal.add(Box.createRigidArea(new Dimension(100, 8)));
         horizontal.add(ordineSingolo);
-        horizontal.add(Box.createRigidArea(new Dimension(100, 8)));
+        ordineSingolo.addActionListener(bl);
+        ordineSingolo.setBackground(Color.orange);
+        ordineClasse.setBackground(Color.orange);
         ordine = new JPanel();
         anteStampa = new JPanel();
-        ordine.add(horizontal);
+        ordine.setBackground(Color.GREEN);
+        ordine.add(vertical);
         ordine.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         anteStampa.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
         anteStampa.add(lblStampa);
@@ -178,6 +191,7 @@ public class Frame extends JFrame {
                     }
                 });
         setJMenuBar(jmb);
+        jmb.setBackground(Color.red);
         HoverListener ls = new HoverListener();
         ordineClasse.addMouseListener(ls);
         ordineSingolo.addMouseListener(ls);
