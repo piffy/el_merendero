@@ -122,7 +122,7 @@ public class FrameClasseStudente extends JFrame {
                             OrdineDiClasse odc = new OrdineDiClasse(Classe);
                             odc.add(new Ordine(Studente));
                             odc.setAula(Aula.substring(5));
-                            FrameOrdine fb = new FrameOrdine(odc);
+                            FrameOrdineSingolo fb = new FrameOrdineSingolo(odc);
                             fb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             fb.setSize(800, 600); // set frame size
                             fb.setLocationRelativeTo(null); // display frame	
