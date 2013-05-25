@@ -61,7 +61,9 @@ public class Frame extends JFrame {
         horizontal.add(Box.createHorizontalGlue());
         horizontal.add(ordineClasse);
         BottoneListener bl=new BottoneListener();
+        ListenerBotton lb=new ListenerBotton();
         ordineSingolo.addActionListener(bl);
+        ordineClasse.addActionListener(lb);
         add(ordineSingolo);
         horizontal.add(Box.createRigidArea(new Dimension(100, 8)));
         horizontal.add(ordineSingolo);
@@ -193,6 +195,18 @@ public class Frame extends JFrame {
                     FrameClasseStudente fb=new FrameClasseStudente();
                     fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
                     fb.setSize( 275, 180 ); // set frame size
+                    fb.setLocationRelativeTo(null); //center fr
+                    fb.setVisible( true ); // display frame	
+		}
+	}
+    private class ListenerBotton implements ActionListener{
+		@Override
+		//metodo obbligatorio che risponde all�evento
+		public void actionPerformed(ActionEvent arg0) {
+                    Frame.this.setVisible(false);
+                    FrameClasse fb=new FrameClasse();
+                    fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+                    fb.setSize( 275, 150 ); // set frame size
                     fb.setLocationRelativeTo(null); //center fr
                     fb.setVisible( true ); // display frame	
 		}
