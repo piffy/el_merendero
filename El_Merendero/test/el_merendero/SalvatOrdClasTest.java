@@ -56,8 +56,6 @@ public class SalvatOrdClasTest {
         prova1.add(p3);
         SalvatOrdClas.Salvataggio(prova1);
         System.out.println("Salvataggio");
-        OrdineDiClasse p = null;
-        SalvatOrdClas.Salvataggio(p);
         assertTrue(new File("./config/ordini/OrdineClas.txt").exists());
         //TODO: Controllare che il contenuto sia adatto 
 
