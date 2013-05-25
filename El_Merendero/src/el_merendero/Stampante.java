@@ -14,6 +14,7 @@ import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -59,7 +60,7 @@ public class Stampante implements Printable {
         String appoggio;
         appoggio = "Classe " + ordine.getClasse();
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 50);
-        appoggio = ordine.getData().get(Calendar.HOUR_OF_DAY) + ":" + ordine.getData().get(Calendar.MINUTE) + " " + ordine.getData().get(Calendar.DATE) + "/" + ordine.getData().get(Calendar.MONTH) + "/" + ordine.getData().get(Calendar.YEAR);
+        appoggio = ordine.getData().get(Calendar.HOUR_OF_DAY) + ":" + ordine.getData().get(Calendar.MINUTE) + " " + ordine.getData().get(Calendar.DATE) + "/" + ((ordine.getData().get(Calendar.MONTH))+1) + "/" + ordine.getData().get(Calendar.YEAR);
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 65);
         appoggio = "Aula " + ordine.getAula();
         g.drawString(appoggio, MARGINE_DESTRO - fm.stringWidth(appoggio), 80);

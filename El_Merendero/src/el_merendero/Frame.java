@@ -194,7 +194,7 @@ public class Frame extends JFrame {
                     Frame.this.setVisible(false);
                     FrameClasseStudente fb=new FrameClasseStudente();
                     fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-                    fb.setSize( 275, 180 ); // set frame size
+                    fb.setSize( 400, 300 ); // set frame size
                     fb.setLocationRelativeTo(null); //center fr
                     fb.setVisible( true ); // display frame	
 		}
