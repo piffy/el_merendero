@@ -227,8 +227,6 @@ public class FrameOrdineSingolo extends JFrame {
         public void actionPerformed(ActionEvent e) {
             try {
                 Stampante st = new Stampante();
-                GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
-                ordine.setData(d);
                 ordine.getFirst().setSoldiForniti(17.5f);
                 st.setOrdine(ordine);
                 st.print();
