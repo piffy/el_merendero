@@ -30,21 +30,11 @@ public class FrameClasseStudente extends JFrame {
     private String nomiClassi[];
     private String nomiStudenti[];
     private final String Aule[] = {"Aula 121","Aula 214","Aula 123","Aula 244","Aula 221","Aula 414","Aula 231","Aula 214","Aula 121","Aula 214","Aula 121","Aula 214"};
-    private JButton cmdFatto;
-    private JButton cmdIndietro;
-    private ListaClassiHardwired list;
-    private JPanel Classi = new JPanel();
-    private JPanel Studenti = new JPanel();
-    private String Classe;
-    private String Studente;
+    private final St
     private String Aula;
     private JComboBox AulaN;
     private GregorianCalendar Data = new GregorianCalendar();
     private Date d;
-
-    public FrameClasseStudente() {
-        super("El_Merendero");
-
         setLayout(new BorderLayout());
 
         cmdFatto = new JButton("Fatto");
@@ -81,11 +71,19 @@ public class FrameClasseStudente extends JFrame {
         Aula = Aule[0];
         Studente = nomiStudenti[0];
         AulaN = new JComboBox(Aule);
+        AulaN = new JLabel( Aula[0]);
         boxStudenti = new JComboBox(nomiStudenti); //set up JComboBox
         boxClassi = new JComboBox(nomiClassi); // set up JComboBox
         boxClassi.setMaximumRowCount(10);
         boxStudenti.setMaximumRowCount(15);
         Classi.add(boxClassi);
+
+        Box vertical = Box.createVerticalBox();
+        vertical.add(Classi);
+        vertical.add(Box.createVerticalGlue());
+        vertical.add(AulaN);
+        add(vertical, BorderLayout.NORTH);
+
         Studenti.add(boxStudenti);
         Box vertical2 = Box.createVerticalBox();
         vertical2.add(Classi);
@@ -102,6 +100,7 @@ public class FrameClasseStudente extends JFrame {
                     nomiStudenti = list.ListaStudentiXClasseData(e.getItem().toString());
                     Classe = e.getItem().toString();
                     boxStudenti.removeAllItems();
+                    AulaN.setText(Aula[boxClassi.getSelectedIndex()]);
                     for (int i = 0; i < nomiStudenti.length; i++) {
                         boxStudenti.addItem(nomiStudenti[i]);
                     }

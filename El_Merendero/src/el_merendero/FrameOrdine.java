@@ -237,15 +237,4 @@ public class FrameOrdine extends JFrame {
             }
         }
     }
-
-    public static void main(String[] args) throws FileNotFoundException {
-        OrdineDiClasse odc = new OrdineDiClasse("4B Info");
-        odc.add(new Ordine("Manfredini"));
-        odc.getFirst();
-        FrameOrdine fr = new FrameOrdine(odc);
-        fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fr.setSize(1000, 600);
-        //fr.setResizable(false);
-        fr.setVisible(true);
-    }
 }
