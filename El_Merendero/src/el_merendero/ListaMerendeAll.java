@@ -5,6 +5,7 @@
 package el_merendero;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class ListaMerendeAll {
         prodotti = new String[30];
         prezzi = new float[30];
         // NOTA: Non mettete i path in stile windows. Java è in grado di utilizzare lo stile Unix/web
-        BufferedReader reader = new BufferedReader(new FileReader("config/merende/".concat("merende.txt")));
+        BufferedReader reader = new BufferedReader(new FileReader(("."+File.separator+"config"+File.separator+"merende"+File.separator).concat("merende.txt")));
         try {
             while ((s = reader.readLine()) != null) {
                 if (i % 2 != 0) {

@@ -84,7 +84,7 @@ public class ClasseTest {
         System.out.println("set_studenti");
         String nomefile = "5C-ELT.txt";
         Classe instance = new Classe("5C-ELT.txt");
-        instance.set_studenti(new File("config\\classi\\".concat(nomefile)));
+        instance.set_studenti(new File(("config"+File.separator+"classi"+File.separator).concat(nomefile)));
         String[] expResult = {"AASSIR RIDA","ABBRACCIAVENTO MARCO","BECCANTINI ANDREA","CABRERA JASON","CAMPANALE MATTIA","DISTRATTO DOMENICO","GOLDONI RICCARDO","GUBERMAN VILLAFANE MAURICIO NAHUEL","MARMIROLI NICOLO' DANIEL","SALARDI FILIPPO"};
         assertEquals(expResult,instance.getNomiStudenti());
         // TODO review the generated test code and remove the default call to fail.

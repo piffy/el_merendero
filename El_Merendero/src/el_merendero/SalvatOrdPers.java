@@ -4,6 +4,7 @@
  */
 package el_merendero;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -16,7 +17,7 @@ public class SalvatOrdPers {
 
     public static void Salvataggio(Ordine p) {
         try {
-            FileOutputStream file = new FileOutputStream("./config/ordini/OrdinePers.txt");
+            FileOutputStream file = new FileOutputStream("."+File.separator+"config"+File.separator+"ordini"+File.separator+"OrdinePers.txt");
             PrintStream Output = new PrintStream(file);
             Output.println(p);
 

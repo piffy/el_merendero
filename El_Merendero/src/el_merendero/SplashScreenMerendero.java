@@ -8,6 +8,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
@@ -45,7 +46,7 @@ public class SplashScreenMerendero extends JWindow {
         timer.start();
         
         setLayout(new BorderLayout());
-        ImageIcon img = new ImageIcon("images/splash.jpg"); 
+        ImageIcon img = new ImageIcon("images"+File.separator+"splash.jpg"); 
         
         JLabel label = new JLabel(img);
         //TODO: Setbackground

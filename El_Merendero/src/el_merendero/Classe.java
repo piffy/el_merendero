@@ -50,7 +50,7 @@ public final class Classe {
      */
     public Classe(String nomefile)
     {
-        File pathfile = new File("config\\classi\\".concat(nomefile));
+        File pathfile = new File(("."+File.separator+"config"+File.separator+"classi"+File.separator).concat(nomefile));
         StudentiTotali=0;
         try {
             ContaStudenti(pathfile);
