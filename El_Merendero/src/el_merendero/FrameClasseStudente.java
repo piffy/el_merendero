@@ -1,7 +1,7 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+* To change this template, choose Tools | Templates
+* and open the template in the editor.
+*/
 package el_merendero;
 
 import java.awt.*;
@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -21,9 +20,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 /**
- *
- * @author charlie
- */
+*
+* @author charlie
+*/
 public class FrameClasseStudente extends JFrame {
 
     private JComboBox boxClassi;
@@ -44,7 +43,7 @@ public class FrameClasseStudente extends JFrame {
     private GregorianCalendar Data = new GregorianCalendar();
     private final SpinnerDateModel model;
     private final JSpinner spinner;
-    private Date d;
+    private Date d = new Date(Long.MIN_VALUE);
 
 
 
@@ -60,7 +59,6 @@ public class FrameClasseStudente extends JFrame {
 
         list = new ListaClassiHardwired();
         Calendar cal = Calendar.getInstance();
-        d = new Date();
         d = cal.getTime();
         d.setHours(11);
         d.setMinutes(00);
@@ -156,7 +154,7 @@ public class FrameClasseStudente extends JFrame {
                         fb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                         fb.setSize(800, 600); // set frame size
                         fb.setLocationRelativeTo(null); //center fr
-                        fb.setVisible(true); // display frame	
+                        fb.setVisible(true); // display frame
                     }
                 });
         cmdFatto.addActionListener(
@@ -165,6 +163,7 @@ public class FrameClasseStudente extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         try {
                             Data.setGregorianChange(d);
+                            Data.setTime(d);
                             FrameClasseStudente.this.setVisible(false);
                             OrdineDiClasse odc = new OrdineDiClasse(Classe);
                             odc.add(new Ordine(Studente));
@@ -173,7 +172,7 @@ public class FrameClasseStudente extends JFrame {
                             FrameOrdineSingolo fb = new FrameOrdineSingolo(odc);
                             fb.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                             fb.setSize(800, 600); // set frame size
-                            fb.setLocationRelativeTo(null); // display frame	
+                            fb.setLocationRelativeTo(null); // display frame
                             fb.setVisible(true); // display frame
                         } catch (FileNotFoundException ex) {
                             Logger.getLogger(FrameClasseStudente.class.getName()).log(Level.SEVERE, null, ex);
