@@ -10,7 +10,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -44,7 +43,7 @@ public class FrameClasseStudente extends JFrame {
     private GregorianCalendar Data = new GregorianCalendar();
     private final SpinnerDateModel model;
     private final JSpinner spinner;
-    private Date d;
+    private Date d = new Date(Long.MIN_VALUE);
 
 
 
@@ -60,7 +59,6 @@ public class FrameClasseStudente extends JFrame {
 
         list = new ListaClassiHardwired();
         Calendar cal = Calendar.getInstance();
-        d = new Date();
         d = cal.getTime();
         d.setHours(11);
         d.setMinutes(00);
@@ -165,6 +163,7 @@ public class FrameClasseStudente extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         try {
                             Data.setGregorianChange(d);
+                            Data.setTime(d);
                             FrameClasseStudente.this.setVisible(false);
                             OrdineDiClasse odc = new OrdineDiClasse(Classe);
                             odc.add(new Ordine(Studente));

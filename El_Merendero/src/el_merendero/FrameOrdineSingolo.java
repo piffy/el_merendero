@@ -8,7 +8,6 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
@@ -247,8 +246,6 @@ public class FrameOrdineSingolo extends JFrame {
             try {
                 
                 Stampante st = new Stampante();
-                GregorianCalendar d = new GregorianCalendar(2013, 11, 22, 23, 12);
-                ordine.setData(d);
                 ordine.getFirst().setSoldiForniti(17.5f);
                 st.setOrdine(ordine);
                 st.print();

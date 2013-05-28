@@ -5,6 +5,7 @@
 package el_merendero;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 
 /**
@@ -15,7 +16,7 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
 
     private String classe;
     private String aula;
-    private Calendar data;
+    private GregorianCalendar data;
 
     public String getAula() {
         return aula;
@@ -29,7 +30,7 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
         return data;
     }
 
-    public void setData(Calendar data) {
+    public void setData(GregorianCalendar data) {
         this.data = data;
     }
 
