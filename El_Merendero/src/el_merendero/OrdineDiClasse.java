@@ -49,6 +49,14 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
         return tot;
     }
 
+    public float getSoldiForniti() {
+        float tot = 0f;
+        for (Ordine o : this) {
+            tot += o.getSoldiForniti();
+        }
+        return tot;
+    }
+
     public String getClasse() {
         return classe;
     }
@@ -61,9 +69,18 @@ public class OrdineDiClasse extends LinkedList<Ordine> {
     public String toString() {
         String s = classe + "\n";
         for (Ordine o : this) {
-            s += "Ordine: " + o ;
+            s += "Ordine: " + o;
             s += "--------------------\n";
         }
         return s;
+    }
+
+    public int getNumeroMerende() {
+        int tot = 0;
+        for (Ordine o : this) {
+            tot++;
+            tot+=o.getNumeroMerende();
+        }
+        return tot;
     }
 }

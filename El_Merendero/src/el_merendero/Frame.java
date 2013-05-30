@@ -12,6 +12,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 
 /**
  *
@@ -77,7 +78,6 @@ public class Frame extends JFrame {
         add(ordineSingolo);
         horizontal.add(Box.createRigidArea(new Dimension(100, 8)));
         horizontal.add(ordineSingolo);
-        ordineSingolo.addActionListener(bl);
         ordineSingolo.setBackground(Color.orange);
         ordineClasse.setBackground(Color.orange);
         ordine = new JPanel();
@@ -205,12 +205,12 @@ public class Frame extends JFrame {
 		@Override
 		//metodo obbligatorio che risponde all�evento
 		public void actionPerformed(ActionEvent arg0) {
-                    Frame.this.setVisible(false);
                     FrameClasseStudente fb=new FrameClasseStudente();
                     fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
                     fb.setSize( 400, 300 ); // set frame size
                     fb.setLocationRelativeTo(null); //center fr
                     fb.setVisible( true ); // display frame	
+                    Frame.this.dispose();
 		}
 	}
     private class ListenerBotton implements ActionListener{
@@ -220,7 +220,7 @@ public class Frame extends JFrame {
                     Frame.this.setVisible(false);
                     FrameClasse fb=new FrameClasse();
                     fb.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-                    fb.setSize( 275, 150 ); // set frame size
+                    fb.setSize( 275, 200 ); // set frame size
                     fb.setLocationRelativeTo(null); //center fr
                     fb.setVisible( true ); // display frame	
 		}

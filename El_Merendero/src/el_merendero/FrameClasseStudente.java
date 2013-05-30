@@ -164,7 +164,6 @@ public class FrameClasseStudente extends JFrame {
                         try {
                             Data.setGregorianChange(d);
                             Data.setTime(d);
-                            FrameClasseStudente.this.setVisible(false);
                             OrdineDiClasse odc = new OrdineDiClasse(Classe);
                             odc.add(new Ordine(Studente));
                             odc.setAula(Aula);
@@ -174,6 +173,7 @@ public class FrameClasseStudente extends JFrame {
                             fb.setSize(800, 600); // set frame size
                             fb.setLocationRelativeTo(null); // display frame
                             fb.setVisible(true); // display frame
+                            FrameClasseStudente.this.dispose();
                         } catch (FileNotFoundException ex) {
                             Logger.getLogger(FrameClasseStudente.class.getName()).log(Level.SEVERE, null, ex);
                         }

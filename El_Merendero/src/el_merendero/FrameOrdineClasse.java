@@ -4,13 +4,11 @@
  */
 package el_merendero;
 
+import el_merendero.Frame;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
-import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -22,15 +20,19 @@ public class FrameOrdineClasse extends JFrame {
     JPanel panel = new JPanel();
     JRadioButton rdbPanini[];
     JTextField txtPanini[];
+    JTextField txtsoldiforniti;
     JButton cmdPaniniDone[];
     JButton cmdPaniniPiu[];
     JButton cmdPaniniMeno[];
     JCheckBox ckbPaniniMaio[];
     JCheckBox ckbPaniniKetchup[];
     JButton cmdStampa;
+    JButton cmdInserisci;
     OrdineDiClasse ordine;
     JLabel lblPanini[];
+    JLabel lblsoldif;
     String names[];
+    String soldifor;
     float prezzi[];
     ButtonGroup group = new ButtonGroup();
     int x = 20, y = 0;
@@ -49,13 +51,16 @@ public class FrameOrdineClasse extends JFrame {
         int n = names.length;
         rdbPanini = new JRadioButton[n];
         txtPanini = new JTextField[n];
+        txtsoldiforniti = new JTextField();
         cmdPaniniDone = new JButton[n];
         cmdPaniniPiu = new JButton[n];
         cmdPaniniMeno = new JButton[n];
         ckbPaniniMaio = new JCheckBox[n];
         ckbPaniniKetchup = new JCheckBox[n];
         lblPanini = new JLabel[n];
+        lblsoldif = new JLabel();
         cmdStampa = new JButton();
+        cmdInserisci = new JButton();
         //Inizializzazione varie proprietà grafiche
 
         this.setFont(new Font("Segoe UI", Font.PLAIN, 20));
@@ -63,6 +68,7 @@ public class FrameOrdineClasse extends JFrame {
         CambiaQuantita aq = new CambiaQuantita();
         OperazioneEseguita oe = new OperazioneEseguita();
         Stampa st = new Stampa();
+        Inserisci ins = new Inserisci();
 
         //Inserimento dei componenti per la gestione dell'ordine
 
@@ -72,19 +78,42 @@ public class FrameOrdineClasse extends JFrame {
             cmdPaniniPiu[i] = new JButton("+");
             cmdPaniniMeno[i] = new JButton("-");
             txtPanini[i] = new JTextField("1");
+            txtsoldiforniti = new JTextField("");
             lblPanini[i] = new JLabel("Prezzo : " + prezzi[i]);
+            lblsoldif = new JLabel("Inserisci soldi forniti ");
             cmdPaniniDone[i] = new JButton("Fatto");
             ckbPaniniMaio[i] = new JCheckBox("Maio");
             ckbPaniniKetchup[i] = new JCheckBox("Ketchup");
-            cmdStampa = new JButton("Falso Inserisci");
+            cmdStampa = new JButton("Stampa");
+            cmdInserisci = new JButton("Inserisci");
+
+            soldifor = "";
+
+            txtsoldiforniti.addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent ke) {
+                    soldifor += ke.getKeyChar();
+                }
+
+                @Override
+                public void keyPressed(KeyEvent ke) {
+                }
+
+                @Override
+                public void keyReleased(KeyEvent ke) {
+                }
+            });
 
             rdbPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             txtPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            txtsoldiforniti.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             lblPanini[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            lblsoldif.setFont(new Font("Segoe UI", Font.PLAIN, 15));
             cmdPaniniDone[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniMaio[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             ckbPaniniKetchup[i].setFont(new Font("Segoe UI", Font.PLAIN, 15));
             cmdStampa.setFont(new Font("Segoe UI", Font.PLAIN, 15));
+            cmdInserisci.setFont(new Font("Segoe UI", Font.PLAIN, 15));
 
             group.add(rdbPanini[i]);
             rdbPanini[i].addActionListener(al);
@@ -92,31 +121,40 @@ public class FrameOrdineClasse extends JFrame {
             cmdPaniniMeno[i].addActionListener(aq);
             cmdPaniniDone[i].addActionListener(oe);
             cmdStampa.addActionListener(st);
+            cmdInserisci.addActionListener(ins);
+            txtsoldiforniti.addActionListener(st);
 
             rdbPanini[i].setBounds(new Rectangle(new Point(1, 1), rdbPanini[i].getPreferredSize()));
             cmdPaniniPiu[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniPiu[i].getPreferredSize()));
             cmdPaniniMeno[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniMeno[i].getPreferredSize()));
             txtPanini[i].setBounds(new Rectangle(new Point(1, 1), txtPanini[i].getPreferredSize()));
+            txtsoldiforniti.setBounds(new Rectangle(new Point(1, 1), txtsoldiforniti.getPreferredSize()));
             lblPanini[i].setBounds(new Rectangle(new Point(1, 1), lblPanini[i].getPreferredSize()));
+            lblsoldif.setBounds(new Rectangle(new Point(1, 1), lblsoldif.getPreferredSize()));
             cmdPaniniDone[i].setBounds(new Rectangle(new Point(1, 1), cmdPaniniDone[i].getPreferredSize()));
             ckbPaniniMaio[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniMaio[i].getPreferredSize()));
             ckbPaniniKetchup[i].setBounds(new Rectangle(new Point(1, 1), ckbPaniniKetchup[i].getPreferredSize()));
             cmdStampa.setBounds(new Rectangle(new Point(1, 1), cmdStampa.getPreferredSize()));
+            cmdInserisci.setBounds(new Rectangle(new Point(1, 1), cmdInserisci.getPreferredSize()));
 
             rdbPanini[i].setLocation(x, y += 60);
             cmdPaniniPiu[i].setLocation(rdbPanini[i].getX() + 300, rdbPanini[i].getY() + 3);
             cmdPaniniMeno[i].setLocation(cmdPaniniPiu[i].getX() + 45, rdbPanini[i].getY() + 3);
             txtPanini[i].setLocation(cmdPaniniMeno[i].getX() + 100, rdbPanini[i].getY() + 3);
+            // txtsoldiforniti.setLocation(txtsoldiforniti.getX() + 100, rdbPanini[i].getY() + 3);
             lblPanini[i].setLocation(txtPanini[i].getX() + 50, rdbPanini[i].getY() + 3);
             cmdPaniniDone[i].setLocation(lblPanini[i].getX() + 100, rdbPanini[i].getY());
             ckbPaniniMaio[i].setLocation(rdbPanini[i].getX() + 20, rdbPanini[i].getY() + 30);
             ckbPaniniKetchup[i].setLocation(ckbPaniniMaio[i].getX() + 100, ckbPaniniMaio[i].getY());
             cmdStampa.setLocation(670, 520);
+            cmdInserisci.setLocation(570, 520);
+            txtsoldiforniti.setLocation(670, 470);
+            lblsoldif.setLocation(490, 470);
 
             cmdPaniniPiu[i].setSize(45, 25);
             cmdPaniniMeno[i].setSize(45, 25);
             txtPanini[i].setSize(30, 25);
-
+            txtsoldiforniti.setSize(85, 25);
             cmdPaniniPiu[i].setVisible(false);
             cmdPaniniMeno[i].setVisible(false);
             txtPanini[i].setVisible(false);
@@ -130,11 +168,14 @@ public class FrameOrdineClasse extends JFrame {
             panel.add(cmdPaniniPiu[i]);
             panel.add(cmdPaniniMeno[i]);
             panel.add(txtPanini[i]);
+            panel.add(txtsoldiforniti);
+            panel.add(lblsoldif);
             panel.add(lblPanini[i]);
             panel.add(cmdPaniniDone[i]);
             panel.add(ckbPaniniMaio[i]);
             panel.add(ckbPaniniKetchup[i]);
             panel.add(cmdStampa);
+            panel.add(cmdInserisci);
         }
 
     }
@@ -214,7 +255,7 @@ public class FrameOrdineClasse extends JFrame {
             }
             boolean cond[] = {ckbPaniniMaio[k].isSelected(), ckbPaniniKetchup[k].isSelected()};
             Merenda m = new Merenda(names[k], prezzi[k], Integer.parseInt(txtPanini[k].getText()), cond);
-            ordine.getFirst().addMerenda(m);
+            ordine.getLast().addMerenda(m);
             txtPanini[k].setText("1");
             ckbPaniniMaio[k].setSelected(false);
             ckbPaniniKetchup[k].setSelected(false);
@@ -225,12 +266,50 @@ public class FrameOrdineClasse extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                Stampante st = new Stampante();
-                st.setOrdine(ordine);
-                st.print();
-            } catch (PrinterException ex) {
-                Logger.getLogger(FrameOrdineClasse.class.getName()).log(Level.SEVERE, null, ex);
+            Exception string = null;
+            if (soldifor != "") {
+                ordine.getLast().setSoldiForniti(Float.parseFloat(soldifor));
+            }
+            if (ordine.getLast().getSoldiForniti() < ordine.getLast().getTotale()) {
+                JOptionPane.showMessageDialog(null, "Soldi insufficienti.", "Soldi", 1);
+            } else {
+                try {
+
+                    Stampante st = new Stampante();
+                    st.setOrdine(ordine);
+                    st.print();
+                } catch (PrinterException ex) {
+                    string = ex;
+                }
+                if (string == null) {
+                    FrameOrdineClasse.this.dispose();
+                    Frame fr = new Frame();
+                    fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    fr.setSize(800, 600);
+                    fr.setLocationRelativeTo(null);
+                    fr.setVisible(true); // display frame
+                    JOptionPane.showMessageDialog(null, "Stampa completata.", "Stampa", 1);
+                }
+            }
+        }
+    }
+
+    private class Inserisci implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (soldifor != "") {
+                ordine.getLast().setSoldiForniti(Float.parseFloat(soldifor));
+            }
+            if (ordine.getLast().getSoldiForniti() < ordine.getLast().getTotale()) {
+                JOptionPane.showMessageDialog(null, "Soldi insufficienti.", "Soldi", 1);
+            } else {
+                FrameOrdineClasse.this.dispose();
+                FrameStudente fr = new FrameStudente(ordine);
+                fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                fr.setSize(275, 110);
+                fr.setLocationRelativeTo(null);
+                fr.setVisible(true); // display frame
             }
         }
     }
@@ -238,8 +317,8 @@ public class FrameOrdineClasse extends JFrame {
     public static void main(String[] args) throws FileNotFoundException {
         OrdineDiClasse odc = new OrdineDiClasse("4B Info");
         odc.add(new Ordine("Manfredini"));
-        odc.getFirst();
-        FrameOrdineClasse fr = new FrameOrdineClasse(odc);
+        odc.getLast();
+        FrameOrdineSingolo fr = new FrameOrdineSingolo(odc);
         fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         fr.setSize(1000, 600);
         //fr.setResizable(false);

@@ -75,4 +75,11 @@ public class Ordine extends LinkedList<Merenda> {
         }
         return s;
     }
+    public int getNumeroMerende() {
+        int tot = 0;
+        for (Merenda m : this) {
+            tot++;
+        }
+        return tot;
+    }
 }

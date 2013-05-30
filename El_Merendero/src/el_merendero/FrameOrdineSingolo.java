@@ -4,13 +4,11 @@
  */
 package el_merendero;
 
+import el_merendero.Frame;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.PrinterException;
 import java.io.FileNotFoundException;
-import java.util.GregorianCalendar;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 
 /**
@@ -84,11 +82,10 @@ public class FrameOrdineSingolo extends JFrame {
             ckbPaniniMaio[i] = new JCheckBox("Maio");
             ckbPaniniKetchup[i] = new JCheckBox("Ketchup");
             cmdStampa = new JButton("Stampa");
-            
-            soldifor="";
-            
-            txtsoldiforniti.addKeyListener(new KeyListener(){
 
+            soldifor = "";
+
+            txtsoldiforniti.addKeyListener(new KeyListener() {
                 @Override
                 public void keyTyped(KeyEvent ke) {
                     soldifor += ke.getKeyChar();
@@ -260,15 +257,30 @@ public class FrameOrdineSingolo extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                if(soldifor!="")
+            Exception string = null;
+            if (soldifor != "") {
                 ordine.getFirst().setSoldiForniti(Float.parseFloat(soldifor));
-                Stampante st = new Stampante();
-                st.setOrdine(ordine);
-                st.print();
+            }
+            if (ordine.getLast().getSoldiForniti() < ordine.getLast().getTotale()) {
+                JOptionPane.showMessageDialog(null, "Soldi insufficienti.", "Soldi", 1);
+            } else {
+                try {
 
-            } catch (PrinterException ex) {
-                Logger.getLogger(FrameOrdineSingolo.class.getName()).log(Level.SEVERE, null, ex);
+                    Stampante st = new Stampante();
+                    st.setOrdine(ordine);
+                    st.print();
+                } catch (PrinterException ex) {
+                    string = ex;
+                }
+                if (string == null) {
+                    FrameOrdineSingolo.this.dispose();
+                    Frame fr = new Frame();
+                    fr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    fr.setSize(800, 600);
+                    fr.setLocationRelativeTo(null);
+                    fr.setVisible(true); // display frame
+                    JOptionPane.showMessageDialog(null, "Stampa completata.", "Stampa", 1);
+                }
             }
         }
     }
