@@ -1,16 +1,34 @@
 		ISTRUZIONI
+
+QUESTO E' UN PROGRAMMA JAVA: 
+Per essere eseguito richiede che sulla computer sia installata una Java
+Virtual Machine (6 o - meglio - 7)
+
 --------------------------------------------------------------------------------
+PER INSTALLARE JAVA 
+Windows: Andare sul sito della Oracle
 
-Come avviare un file .jar : un file di estensione .jar  � un eseguibile 
-in java, per questo per poter avviare questo tipo di estensioni 
-bisogna installare sul proprio computer il java runtime environment 
-(JRE) ---------> download ------> http://www.oracle.com/technetwork/java/javase/downloads/index.html
+http://www.oracle.com/technetwork/java/javase/downloads/index.html
 
-Download: click sul bottone Download sotto la scritta JRE (non server JRE) e seguire le 
-istruzioni per il completamento del download.
+Fare quindi:ì click sul bottone Download sotto la scritta JRE (non server JRE) e seguire le 
+istruzioni per il completamento del download. Lanciare quindi l'installer
 
-Aprire il file El_Merendero.jar : in windows basta fare doppio click sul file scelto. Altrimenti 
-per avviarlo usare la seguente istruzione -----> "Java -jar nomefile.jar".
+Linux e Unix vari hanno solitamente un meccanismo automatico di installazione
+che dipende dalla specifica versione
+
+--------------------------------------------------------------------------------
+INSTALLAZIONE 
+
+Per installare il programma basta scompattare il file .zip nella cartella di 
+vostro gradimento utlizzando 7zip o simili programmi.
+
+USO
+
+Il più delle volte e' sufficiente fare un doppio click sul file El_Merendero.jar.
+
+Certi sistemi possono dare qualche problema: in questo caso per lanciare il 
+programma basta fare doppio click sul file el_merendero.bat 
+(Windows) o el_merendero.sh (Linux/Unix). 
 
 --------------------------------------------------------------------------------  
 
