@@ -5,21 +5,21 @@
 @font-face
 {
 font-family: forque;
-src: url('Forque.eot');
-src: url('Forque.eot?#iefix') format('embedded-opentype'),
-url('Forque.ttf')  format('truetype'), 
-url('Forque.ttf'),
-url('Forque.woff') format('woff');
+src: url('fonts/Forque.eot');
+src: url('fonts/Forque.eot?#iefix') format('embedded-opentype'),
+url('fonts/Forque.ttf')  format('truetype'), 
+url('fonts/Forque.ttf'),
+url('fonts/Forque.woff') format('woff');
 }
 
 @font-face
 {
 font-family: bodonitown;
-src: url('Bodonitown.eot');
-src: url('Bodonitown.eot?#iefix') format('embedded-opentype'),
-url('Bodonitown.ttf')  format('truetype'), 
-url('Bodonitown.ttf'),
-url('Bodonitown.woff') format('woff');
+src: url('fonts/Bodonitown.eot');
+src: url('fonts/Bodonitown.eot?#iefix') format('embedded-opentype'),
+url('fonts/Bodonitown.ttf')  format('truetype'), 
+url('fonts/Bodonitown.ttf'),
+url('fonts/Bodonitown.woff') format('woff');
 }
 /***************************************************/
 
@@ -33,87 +33,36 @@ text-align: center;
 }
 
 body {
-/*background-color:#F2EE76; */
-background-image:url("backmenu.png");
+background-image:url("img/backmenu.png");
 overflow-x: hidden;
 }
 
-/************************/
-/******** LA HEAD *******/
-/************************/
 #head {
 text-align:left;
 height: 175px;
 width:100%;
-/*height: 175px;
-/*display: block; */
-background: url("foodcollage.jpg");
-border-bottom: 1px solid black; /*
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
-}
-/*****************************/
-/******* IMG DELLA HEAD ******/
-/*****************************/
-/*img.headimg {
-width:100%;
-height: 188px;"
-}
-
-@media handheld, only screen and (max-width: 400px){ 
-   header#head { 
-           display:none; 
-}
-} 
-/**********************/                        
-/****** I LOGHI *******/
-/**********************/ 
-img.logo {
-/*position: fixed;
-top: 0;
-left: 0;*/
+background: url("img/foodcollage.jpg");
+border-bottom: 1px solid black;
 }
 
 img.footerlogo {
-/*position:fixed;
-left:30px;     */
 margin-top:30px;
 margin-left:15px;  
 }
-/*********************************************/
-/********* STILE DEI VARI DIV INTERNI ********/
-/*********************************************/
+
 div#headcontent {
 width:100%;
-/*background-color:brown;  */
-background-image:url("backhead.png");
+background-image:url("img/backhead.png");
 margin-top: 2px;
-}
-
-div#imgslider {
-height: inherit;
 }
 
 div#slider {
 width: 100%;
 height: inherit;
-}
-
-div#textslider {
-text-align:left;
-float: left;
-width: 40%;
-height: inherit;
-margin: 0 auto;
 background-color: rgba(0, 0, 0, 0.65);
-font-family:bodonitown;
+display:none;
 }
 
-/******************************/
-/********* BARRA MENU *********/
-/******************************/
 table.menu {
 text-align: center;
 font-size: 21px;
@@ -135,55 +84,31 @@ background-color: transparent;
 td.menu:hover {
 color:#F2EE76;
 background-color: #AB3F36;
+text-shadow: 2px 2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
 td#selected {
 color:#BCB95C;
 background-color: #541E1A;
+text-shadow: 2px 2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
 }
 
 a.menu{
 text-decoration:none;
 color:inherit;
 }
-/*****************************/
-/****** DIV CHE RISIZEANO ****/
-/*****************************/
-.container {
-float: left;
-width: 60%;
-height: inherit;
-margin: 0 auto;
-}
-.container img.wide {
-max-width: 100%;
-max-height: 100%;
-height: auto;
-min-width: 100%;
-min-height: 100%;
-}
-.container img.tall {
-max-height: 100%;
-max-width: 100%;
-width: auto;
-min-width: 100%;
-min-height: 100%;
-}
-/*************************/
-/******* I FOOTERS *******/
-/*************************/
 
 p.footerlinks {
 font-family:bodonitown;
 word-spacing: 3px;
 font-size: 14px;
 position: relative;
-left: 75px;
+right: 24px;
 top: -10px;
 }
 
 div.footercontent {
-text-align: left;
+text-align: right;
 }
 
 a.footerlink {
@@ -194,31 +119,22 @@ color:black;
 a.footerlink:hover {
 text-decoration:underline;
 }
-/********************************/
-/***** IMMAGINI INTERATTIVE *****/
-/********************************/
-img#slideopz {
-position: relative; 
-top:-37px; 
-left:106px;
-}
-/****************************/
-/****** I TEXT SLIDERS ******/
-/****************************/
 
-h2.textslider {
-margin-left:20px;
-margin-top:20px;
+h1.wellcome {
+    color: white;
+    font-family: bodonitown;
+    font-size: 80px;
+    padding-top: 65px;
 }
 
-p.textslider {
-margin-left:20px;
-margin-right:20px;
-font-size:17px;
+p#wellcome {
+color:White;
+margin-left: 68px;
+margin-right: 68px;
+font-size: 36px;
+display:none;
 }
-/***************************/
-/***** IMAGINE INTERNA *****/
-/***************************/
+
 img.textlogo {
 height: 222px;
 width: 300px;
@@ -226,6 +142,15 @@ margin-top:20px;
 margin-left:30px;
 margin-right:10px;
 }   
+
+img.dlogo {
+height: 56px;
+width: 76px;
+margin-top:20px;
+margin-left:30px;
+margin-right:20px;
+}  
+
 img.photogallery {
 height: 222px;
 width: 300px;
@@ -233,18 +158,189 @@ margin-top:20px;
 margin-left:10px;
 margin-right:10px;
 }
-/************************/
-/***** TESTO PAGINA *****/
-/************************/
+
 p.content {
-margin-left:30px;
-font-size:18px;
+font-size:20px;
 font-family:bodonitown;
 margin-right:30px;
+margin-left:30px;
 }
 
 h1.content {
 margin-left:30px;
 font-family:bodonitown;
 padding-top:20px;
+}
+
+h2.content {
+margin-left:30px;
+font-family:bodonitown;
+padding-top:20px;
+margin-right: 30px;
+}
+
+h3.content {
+font-family:bodonitown;
+background-image:url("img/icon_plus.png");
+background-repeat:no-repeat;
+padding-bottom: 5px;
+padding-left:35px;
+overflow:hidden;
+}
+
+div.dcontainer
+{
+    background-color:#CCCCC9;
+    margin-left:30px;
+    margin-right:30px;
+}
+
+.dropdown {
+width: 180px;
+height: 32px;
+}
+
+span.dbutton{
+padding:0px 30px 0px 30px;
+background-color: #1C7A13; /*#d63105*/
+font-size:163%;
+color: white;
+font-family: forque;
+text-shadow: 2px 2px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
+float: right;
+-webkit-transition: 0.3s linear;
+-o-transition: 0.3s linear;
+-moz-transition: 0.3s linear;
+}
+
+span.dbutton:hover
+{
+    background-color:#12490B;
+}
+
+#dettagli
+{
+    margin-left:70px;
+    background-color: #CCCCC9;
+    font-family:bodonitown;
+    display:none;
+    margin-bottom:20px;
+}
+
+td.dettagli
+{
+    padding-right:190px;
+    padding-bottom:45px;
+}
+
+#requisiti
+{
+    margin-left:70px;
+    background-color: transparent;
+    border: 1px solid #CCCCC9;
+    font-family:bodonitown;
+    display:none;
+    margin-bottom: 20px;
+}
+
+#linkutili
+{
+    margin-left:70px;
+    background-color: transparent;
+    border: 1px solid #CCCCC9;
+    font-family:bodonitown;
+    display:none;
+    margin-bottom: 20px;
+}
+
+.riquadro
+{
+   background-color: transparent;
+   border: 1px solid #CCCCC9;
+   font-family:bodonitown; 
+   display:inline-block;
+   margin-right:30px;
+   margin-left:30px;
+   font-size: 17px;
+}
+
+#istruzioni
+{
+    margin-left:70px;
+    background-color: #CCCCC9;
+    font-family:bodonitown;
+    display:none;
+    margin-bottom: 20px; 
+    margin-right: 30px;
+}
+
+a.ulink
+{
+    text-decoration:none;
+    font-style:italic;
+    color:Black;
+}
+
+a.ulink:hover
+{
+    color:#d63105;
+}
+
+td.merende
+{
+    padding:10px;
+    background-color:#EEC346;
+    text-align:center;
+    cursor: pointer;
+    border: 1px solid #BC9938;
+}
+
+td.prezzi
+{
+    padding:10px;
+    background-color:#6AA56D;
+    text-align:center;
+    cursor: pointer;
+    border: 1px solid #527F55;
+}
+
+.head
+{
+    background-color:#CCCCC9;
+    text-align:center;
+    padding:10px;
+    cursor: pointer;
+    border: 1px solid #A8A8A6;
+}
+
+.head:hover
+{
+    background-color:#A8A8A6;
+}
+
+td.prezzi:hover
+{
+    background-color:#527F55;
+}
+
+td.merende:hover
+{
+    background-color:#BC9938;
+}
+
+div.tabella
+{
+margin-left: 30px;
+margin-right: 30px;
+text-align: center;
+box-shadow: 0px 0px 10px 0px white;
+-moz-box-shadow:0px 0px 10px 0px white;
+-webkit-box-shadow:0px 0px 10px 0px white;
+}
+
+.shadow
+{
+ box-shadow: 0px 0px 20px 0px black;
+-moz-box-shadow:0px 0px 20px 0px black;
+-webkit-box-shadow:0px 0px 20px 0px black;
 }

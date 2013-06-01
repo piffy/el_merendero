@@ -1,61 +1,43 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" id="hiddentag" style="display:none;">
   <head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1250" />
   <meta name="generator" content="PSPad editor, www.pspad.com" />
+  <link rel="shortcut icon" href="img/toplogo.png" />
   <link href="style.css" type="text/css" rel="stylesheet" media="screen" />
   <title>EL MERENDERO - STORIA</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="script.js"></script>
   </head>
-  <body>
-  <header id="head" ><a style="text-decoration:none; color:transparent;" href="index.html"><img src="log.png" class="logo" alt="logo" /></a></header>
+  <body onload="fade()">
+  <div id="head" ><a style="text-decoration:none; color:transparent;" href="index.html"><img src="img/log.png" alt="logo" onmouseover="imgbrighter(this)" onmouseout="imgbrighter(this)" /></a></div>
   <table class="menu" cellpadding="0" cellspacing="0">
   <tr>
   <td class="menu"><a href="index.html" class="menu">HOME</a></td>
-  <td class="menu" id="selected"><a class="menu">STORIA</a></td>
-  <td class="menu"><a href="progetto.html" class="menu">PROGETTO</a></td>  <!--che conterrŕ la voce codice con appositi link a pivotal e a git-->
-  <td class="menu"><a href="photogallery.html" class="menu">PHOTO GALLERY</a></td>
+  <td class="menu" id="selected"><a href="#null" class="menu">STORIA</a></td>
+  <td class="menu"><a href="download.html" class="menu">DOWNLOAD</a></td>
   <td class="menu"><a href="merende.html" class="menu">MERENDE</a></td>
   </tr>
   </table>
-  <div id="headcontent" style="text-align:left;padding-bottom:20px;">
+  <div id="headcontent" style="text-align:left;padding-bottom:20px;height:400px;">
   <div>
-  <img class="textlogo" src="1.jpg" alt="textlogo" align="left" />
+  <img class="textlogo" src="img/1.jpg" alt="textlogo" align="left" />
   <h1 class="content">LA STORIA</h1>
-  <p class="content">ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p class="content">Il progetto ha trovato il suo inizio in una discussione tra il coordinatore del bar dell'istituto F.Corni e il prof di informatica Marcello Missiroli. 
+  Quest' ultimo infatti, proponeva di creare un programma che permettesse a tutte le classi della scuola di ordinare al bar senza recarvisi fisicamente. La controproposta 
+  del barista fu quella di realizarlo solo per le classi quinte; le quali, durante l'esame di maturita non sarebbero potuti uscire dalle aule per svariate ore. Cos&igrave; 
+  il lavoro venne assegnato alla classe 4B informatica che con l'aiuto del prof Missiroli inizi&ograve; con un brainstorming di classe. Questo venne seguito da una scomposi
+  zione del lavoro in vari task, che ognuno ha poi svolto lavorando indipendentemente. Facendo tutti assieme delle stime per ogni compito in termini di tempo siamo riuscitia 
+  capire quali task sarebbero risultati pi&ugrave; semplici e quelli pi&ugrave; difficili, in modo da organizzare meglio il lavoro. 
+  Il progetto si &egrave; servito di strumenti per la programmazione moderna, quali github e pivotal tracker, che hanno aiutato i 
+  numerosi partecipanti a gestire un progetto cos&igrave; grande e complesso. Dopo un paio di settimane di lavoro la classe consgna un programma funzionante, ma ancora migliorabile. 
+  A questo punto abbiamo dovuto reiniziare il lavoro con l'obbiettivo di aggiungere funzionalit&agrave; e miglirare quelle esistenti. Cos&igrave; ci siamo riassegnati altri lavori dopo aver fatto un'altra stima.
+  </p>
    </div>
   </div>
   <div class="footercontent">
-  <img src="logi.png" class="footerlogo" alt="footerlogo" />
-  <p class="footerlinks" ><a class="footerlink" href="#null">Contatti</a> | <a class="footerlink" href="#null">Privacy</a></p>
+  <img src="img/logi.png" class="footerlogo" alt="footerlogo" />
+  <p class="footerlinks" ><a class="footerlink" href="contatti.html">Contatti</a> | <a class="footerlink" href="copyright.html">Copyright</a></p>
   </div>
   </body>
 </html>

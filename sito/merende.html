@@ -1,61 +1,68 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" id="hiddentag" style="display:none;">
   <head>
   <meta http-equiv="content-type" content="text/html; charset=windows-1250" />
   <meta name="generator" content="PSPad editor, www.pspad.com" />
+  <link rel="shortcut icon" href="img/toplogo.png" />
   <link href="style.css" type="text/css" rel="stylesheet" media="screen" />
   <title>EL MERENDERO - MERENDE</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script type="text/javascript" src="script.js"></script>
   </head>
-  <body>
-  <header id="head" ><a style="text-decoration:none; color:transparent;" href="index.html"><img src="log.png" class="logo" alt="logo" /></a></header>
+  <body onload="fade()">
+  <div id="head" ><a style="text-decoration:none; color:transparent;" href="index.html"><img src="img/log.png" alt="logo" onmouseover="imgbrighter(this)" onmouseout="imgbrighter(this)" /></a></div>
   <table class="menu" cellpadding="0" cellspacing="0">
   <tr>
   <td class="menu"><a href="index.html" class="menu">HOME</a></td>
   <td class="menu"><a href="storia.html" class="menu">STORIA</a></td>
-  <td class="menu"><a href="progetto.html" class="menu">PROGETTO</a></td>  <!--che conterrŕ la voce codice con appositi link a pivotal e a git-->
-  <td class="menu"><a href="photogallery.html" class="menu">PHOTO GALLERY</a></td>
-  <td class="menu" id="selected"><a class="menu">MERENDE</a></td>
+  <td class="menu"><a href="download.html" class="menu">DOWNLOAD</a></td>
+  <td class="menu" id="selected"><a href="#null" class="menu">MERENDE</a></td>
   </tr>
   </table>
-  <div id="headcontent" style="text-align:left;padding-bottom:20px;">
-  <div>
-  <img class="textlogo" src="4.jpg" alt="textlogo" align="left" />
-  <h1 class="content">LE MERENDE</h1>
-  <p class="content">ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-   ArmWrestler Bold - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in repreh
-   enderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupida
-   tat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-   </div>
+  <div id="headcontent" style="text-align:left;height:400px;background-image:url('img/home.jpg');">
+  <div id="slider" style="display:block;">
+  <h1 class="content" style="color:White;">LE MERENDE</h1>
+  <p class="content" style="color:White;">In questa sezione trovate la lista delle merende presenti al bar con i loro prezzi.</p><br />
+  <br />
+  <div class="tabella">
+  <table border="0" cellpadding="0" cellspacing="0">
+  <thead>
+  <tr>
+  <th class="head" colspan="7">Merende</th>
+  <th class="head" colspan="4">Bibite</th>
+  </tr>
+  </thead>
+  <tr>
+  <td class="merende">Focaccia cotto mozzarella</td>
+  <td class="merende">Focaccia crudo mozzarella</td>
+  <td class="merende">Piadina cotto mozzarella</td>
+  <td class="merende">Piadina crudo mozzarella</td>
+  <td class="merende">Hot Dog</td>
+  <td class="merende">Focaccia pomodoro mayo insalata</td>
+  <td class="merende">Cotoletta</td>
+  <td class="merende">Acqua 50cl</td>
+  <td class="merende">Coca Cola 33cl</td>
+  <td class="merende">Th&egrave; 50cl</td>
+  <td class="merende">Estath&egrave; 50cl</td>
+  </tr>
+  <tr>
+  <th class="head" colspan="7">Prezzi</th>
+  <th class="head" colspan="4">Prezzi</th>
+  </tr>
+  <tr>
+  <td class="prezzi" colspan="7">2,50€</td>
+  <td class="prezzi">0.60€</td>
+  <td class="prezzi">1.30€</td>
+  <td class="prezzi">1.50€</td>
+  <td class="prezzi">1.00€</td>
+  </tr>
+  </table>
   </div>
+  </div>
+   </div>
   <div class="footercontent">
-  <img src="logi.png" class="footerlogo" alt="footerlogo" />
-  <p class="footerlinks" ><a class="footerlink" href="#null">Contatti</a> | <a class="footerlink" href="#null">Privacy</a></p>
+  <img src="img/logi.png" class="footerlogo" alt="footerlogo" />
+  <p class="footerlinks" ><a class="footerlink" href="contatti.html">Contatti</a> | <a class="footerlink" href="copyright.html">Copyright</a></p>
   </div>
   </body>
 </html>
