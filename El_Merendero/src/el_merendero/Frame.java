@@ -28,17 +28,17 @@ public class Frame extends JFrame {
     private JPanel anteStampa;
     JMenuBar jmb = new JMenuBar();          //riguardo alla barra menu superiore;
     JMenu menuFile = new JMenu("File");
-    JMenu menuEdit = new JMenu("Modifica");
-    JMenu menuView = new JMenu("Visualizza");
+    //JMenu menuEdit = new JMenu("Modifica");
+    //JMenu menuView = new JMenu("Visualizza");
     JMenu menuHelp = new JMenu("?");
-    JMenuItem FileItemNew = new JMenuItem("Crea Nuovo Ordine");
-    JMenuItem FileItemSave = new JMenuItem("Salva Ordine");
-    JMenuItem FileItemSaveWName = new JMenuItem("Salva Ordine Con Nome");
-    JMenuItem FileItemOpen = new JMenuItem("Apri Ordine");
-    JMenuItem FileItemPrint = new JMenuItem("Stampa Ordine");
+    //JMenuItem FileItemNew = new JMenuItem("Crea Nuovo Ordine");
+    //JMenuItem FileItemSave = new JMenuItem("Salva Ordine");
+    //JMenuItem FileItemSaveWName = new JMenuItem("Salva Ordine Con Nome");
+   // JMenuItem FileItemOpen = new JMenuItem("Apri Ordine");
+    //JMenuItem FileItemPrint = new JMenuItem("Stampa Ordine");
     JMenuItem FileItemExit = new JMenuItem("Esci");
     JMenuItem HelpItemAbout = new JMenuItem("About");
-    JMenuItem HelpItemGuide = new JMenuItem("Guida");
+    //JMenuItem HelpItemGuide = new JMenuItem("Guida");
     JMenuItem ViewItemPreview = new JMenuItem("Anteprima Di Stampa");
     Box LayoutMenu = Box.createHorizontalBox();
     private JButton ordineClasse = new JButton("Ordine di classe");
@@ -91,21 +91,21 @@ public class Frame extends JFrame {
         add(anteStampa, BorderLayout.EAST);
         anteStampa.setVisible(false);
         menuFile.setMnemonic('F');
-        menuEdit.setMnemonic('M');
-        menuView.setMnemonic('V');
+        //menuEdit.setMnemonic('M');
+        //menuView.setMnemonic('V');
         jmb.add(menuFile);
-        menuFile.add(FileItemNew);
-        FileItemNew.setMnemonic('N');
-        FileItemNew.setAccelerator(KeyStroke.getKeyStroke('N', InputEvent.CTRL_DOWN_MASK));
-        FileItemNew.addActionListener(
+        //menuFile.add(FileItemNew);
+        //FileItemNew.setMnemonic('N');
+        //FileItemNew.setAccelerator(KeyStroke.getKeyStroke('N', InputEvent.CTRL_DOWN_MASK));
+        /*FileItemNew.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         
                     }
-                });
-        menuFile.add(FileItemSave);
-        FileItemSave.setMnemonic('S');
+                });*/
+        //menuFile.add(FileItemSave);
+        /*FileItemSave.setMnemonic('S');
         FileItemSave.setAccelerator(KeyStroke.getKeyStroke('S', InputEvent.CTRL_DOWN_MASK));
         FileItemSave.addActionListener(
                 new ActionListener() {
@@ -123,7 +123,7 @@ public class Frame extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         JOptionPane.showMessageDialog(Frame.this, "Salvataggio dell'ordine corrente, specificando il nome", "Salva con nome", JOptionPane.INFORMATION_MESSAGE);
                     }
-                });
+               });
         menuFile.add(FileItemOpen);
         FileItemOpen.setMnemonic('A');
         FileItemOpen.setAccelerator(KeyStroke.getKeyStroke('O', InputEvent.CTRL_DOWN_MASK));
@@ -143,7 +143,7 @@ public class Frame extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         JOptionPane.showMessageDialog(Frame.this, "Stampa l'ordine corrente", "Stampa", JOptionPane.INFORMATION_MESSAGE);
                     }
-                });
+                });*/
         menuFile.add(FileItemExit);
         FileItemExit.setMnemonic('E');
         FileItemExit.setAccelerator(KeyStroke.getKeyStroke('E', InputEvent.CTRL_DOWN_MASK));
@@ -154,10 +154,10 @@ public class Frame extends JFrame {
                         System.exit(0);
                     }
                 });
-        jmb.add(menuEdit);
-        menuEdit.add(" ");
-        jmb.add(menuView);
-        menuView.add(ViewItemPreview);
+        //jmb.add(menuEdit);
+        //menuEdit.add(" ");
+        //jmb.add(menuView);
+        //menuView.add(ViewItemPreview);
         ViewItemPreview.setMnemonic('A');
         ViewItemPreview.setAccelerator(KeyStroke.getKeyStroke('A', InputEvent.CTRL_DOWN_MASK));
         ViewItemPreview.addActionListener(
@@ -172,15 +172,15 @@ public class Frame extends JFrame {
                     }
                 });
         jmb.add(menuHelp);
-        menuHelp.add(HelpItemGuide);
-        HelpItemGuide.setMnemonic('G');
-        HelpItemGuide.addActionListener(
+       // menuHelp.add(HelpItemGuide);
+        //HelpItemGuide.setMnemonic('G');
+        /*HelpItemGuide.addActionListener(
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         JOptionPane.showMessageDialog(Frame.this, "Mostra una breve guida su come utilizzare il programma", "Guida", JOptionPane.INFORMATION_MESSAGE);
                     }
-                });
+                });*/
         menuHelp.add(HelpItemAbout);
         HelpItemAbout.setMnemonic('B');
         HelpItemAbout.addActionListener(

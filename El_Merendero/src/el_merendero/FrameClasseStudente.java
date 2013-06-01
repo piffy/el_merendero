@@ -31,7 +31,7 @@ public class FrameClasseStudente extends JFrame {
     private String nomiStudenti[];
     private JButton cmdFatto;
     private JButton cmdIndietro;
-    private String Aule[] = {"Aula 131","Aula 123","Aula 313","Aula 404","Aula 112"};
+    private String Aule[] = {"Aula __________", "LabInfo", "LabSist1P", "LabSist2P", "LabELeSis", "LabEle1P", "LabEle2P", };
     private ListaClassiHardwired list;
     private JComboBox boxAula;
     private JPanel Classi = new JPanel();
